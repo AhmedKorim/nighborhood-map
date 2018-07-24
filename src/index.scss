@@ -1,0 +1,133 @@
+/*
+this scss file isn't compilable with this work flow i used IDE watcher to compile it
+*/
+
+/*----------------------------------
+  colors2E2E2E
+----------------------------------*/
+$mainColor: #2E2E2E;
+$secColor: #2E2E2E;
+$lightColor: #F3F3F3;
+$color: #E80E84;
+
+body {
+  margin: 0;
+  padding-top: 63px;
+  font-family: sans-serif;
+}
+
+.main-header {
+  background-color: $mainColor;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+  0px 5px 8px 0px rgba(0, 0, 0, 0.14),
+  0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+  > div {
+    //width: (100%/3);
+  }
+  h1 {
+    text-align: center;
+    margin: 0;
+    color: $lightColor;
+  }
+}
+
+.button-link {
+  color: $color;
+  transition: all ease-in-out .3s;
+  position: relative;
+  text-decoration: none;
+  &:hover, &:active, &:focus {
+    color: $color;
+    text-decoration: none;
+  }
+  .material-icons {
+    font-size: 1.8rem;
+    padding: 1rem;
+  }
+  // if it is a child of header element
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+/*----------------------------------
+  main header
+----------------------------------*/
+.main-header {
+  position: absolute;
+  width: 100%;
+  z-index: 8;
+  top: 0;
+  .side-nav-toggle, .map-tools {
+    .button-link {
+      padding: 1rem;
+      .material-icons{
+        transition: all .3s ease-in-out;
+      }
+      &.close {
+        .material-icons {
+          transform: rotate(180deg);
+        }
+      }
+      &.menu {
+        .material-icons {
+          transform: rotate(0deg);
+        }
+
+      }
+    }
+  }
+  .app-tools {
+    display: inline;
+  }
+}
+
+/*----------------------------------
+  main
+----------------------------------*/
+main {
+  height: calc(100vh - 63px);
+  display: flex;
+  position: relative;
+  z-index: 5;
+  .side-wrapper {
+    height: 100%;
+    background-color: $secColor;
+    width: (100% *(.7/3));
+    position: absolute;
+    z-index: 15;
+    transition: transform ease-in .3s;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 5px 8px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+    &.hidden {
+      transform: translate3d(-100%, 0, 0);
+    }
+    aside {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+    }
+
+  }
+  .map-wrapper {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    transition: width ease-in .3s;
+    &.contraction {
+      width: (100% *2.3/3);
+    }
+  }
+}
+
+/*----------------------------------
+  sidebar
+----------------------------------*/
