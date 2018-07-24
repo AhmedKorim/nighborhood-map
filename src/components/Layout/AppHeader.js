@@ -11,7 +11,7 @@ const AppHeader = (props) => {
                 <h1>neighborhood maps</h1>
             </div>
             <div className="app-tools">
-                //  todo change site colors and map drawing
+                 {/*todo change site colors and map drawing*/}
                 {/*<ButtonLink>place</ButtonLink>*/}
                 {/*<ButtonLink>format_color_fill</ButtonLink>*/}
             </div>
