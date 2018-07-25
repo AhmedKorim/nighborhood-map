@@ -7,12 +7,13 @@ const AppHeader = (props) => {
             <div className="side-nav-toggle">
                 <ButtonLink
                     classNames={props.navExpand ? "close" : "menu"}
-                    click={props.toggleNav}>
+                    click={props.toggleNav}
+                label={props.navExpand ? "click to close the side bar" : "click to open side bar"}>
                     {props.navExpand ? "close" : "menu"}
                     </ButtonLink>
             </div>
             <div className='site-header'>
-                <h1>neighborhood maps</h1>
+                <h1>late nights</h1>
             </div>
             <div className="app-tools">
                  {/*todo change site colors and map drawing*/}

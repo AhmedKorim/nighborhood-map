@@ -1,7 +1,6 @@
 /*
 this scss file isn't compilable with this work flow i used IDE watcher to compile it
 */
-
 /*----------------------------------
   colors2E2E2E
 ----------------------------------*/
@@ -9,6 +8,71 @@ $mainColor: #2E2E2E;
 $secColor: #3a3a3a;
 $lightColor: #F3F3F3;
 $color: #E80E84;
+
+/*----------------------------------
+  framework
+----------------------------------*/
+%clearFocus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+// components
+.button-link {
+  display: block;
+  color: $color;
+  transition: all ease-in-out .3s;
+  position: relative;
+  text-decoration: none;
+  .btn-content {
+    &:hover, &:active, &:focus {
+      @extend %clearFocus;
+    }
+    display: block;
+  }
+  &:focus {
+    .btn-content {
+      box-shadow: 0 0 30px 3px $color;
+
+    }
+    color: $color;
+    text-decoration: none;
+    @extend %clearFocus;
+  }
+  .material-icons {
+    font-size: 1.8rem;
+    padding: 1rem;
+  }
+  // if it is a child of header element
+}
+
+.form-input {
+  position: relative;
+  label {
+    transition: all ease .4s;
+    position: absolute;
+    display: block;
+    color: $lightColor;
+    font-weight: 300;
+    font-size: .8rem;
+  }
+
+  input {
+    display: block;
+    width: 100%;
+    border: none;
+    @extend %clearFocus;
+    background-color: transparent;
+    color: #fff;
+    border-bottom: 1px solid red;
+  }
+  &.dirty {
+    label {
+      transfrom: translate3d(0, -100%, 0);
+    }
+  }
+}
 
 body {
   margin: 0;
@@ -37,22 +101,6 @@ body {
     word-spacing: .2rem;
     letter-spacing: .02rem;
   }
-}
-
-.button-link {
-  color: $color;
-  transition: all ease-in-out .3s;
-  position: relative;
-  text-decoration: none;
-  &:hover, &:active, &:focus {
-    color: $color;
-    text-decoration: none;
-  }
-  .material-icons {
-    font-size: 1.8rem;
-    padding: 1rem;
-  }
-  // if it is a child of header element
 }
 
 .map {
@@ -111,57 +159,71 @@ main {
     0px 5px 8px 0px rgba(0, 0, 0, 0.14),
     0px 1px 14px 0px rgba(0, 0, 0, 0.12);
     &.hidden {
+      aside {
+        visibility: hidden;
+      }
       transform: translate3d(-100%, 0, 0);
     }
-    aside {
-      position: absolute;
-      padding: 1rem 0;
-      width: 100%;
-      height: 100%;
-      nav {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        > div:not(.border) {
-          .button-link{
-            display: block;
-            width: 100%;
-          }
-          text-align: center;
-          width: 40%;
-          transition: all .4s ease;
-          &.active {
-            background-color: $secColor;
-          }
+  }
+  /*----------------------------------
+    aside
+  ----------------------------------*/
+  aside {
+    position: absolute;
+    padding: 1rem 0;
+    width: 100%;
+    height: 100%;
+    nav {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      > div:not(.border) {
+        .button-link {
+          display: block;
+          width: 100%;
         }
-        .border {
-          transition: all .5s ease-in-out;
-          position: absolute;
-          width: 40%;
-          height: 2px;
-          background-color: $color;
-          left: 10%;
-          bottom: 0;
-          &.right {
-            transform: translate3d(100%, 0, 0);
-          }
+        text-align: center;
+        width: 40%;
+        transition: all .4s ease;
+        &.active {
+          background-color: $secColor;
+
+        }
+      }
+      .border {
+        transition: all .5s ease-in-out;
+        position: absolute;
+        width: 40%;
+        height: 2px;
+        background-color: $color;
+        left: 10%;
+        bottom: 0;
+        &.right {
+          transform: translate3d(100%, 0, 0);
         }
       }
     }
-
-  }
-  .map-wrapper {
-    width: 100%;
-    height: 100%;
-    margin-left: auto;
-    transition: width ease-in .3s;
-    &.contraction {
-      width: calc(100% - 240px);
+    .content {
+      padding: 1.5rem;
     }
+  }
+
+}
+
+.map-wrapper {
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  transition: width ease-in .3s;
+  &.contraction {
+    width: calc(100% - 240px);
   }
 }
 
 /*----------------------------------
   sidebar
+----------------------------------*/
+/*----------------------------------
+  foucs style
 ----------------------------------*/

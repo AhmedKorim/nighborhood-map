@@ -8,12 +8,18 @@ class App extends Component {
     state = {
         navExpand: true,
         leftTap: true,
-        activeTap:"left"
+        activeTap: "left",
+        filter: '',
     };
     changeActiveTap = (e) => {
         e.preventDefault();
         !e.target.closest('div').classList.contains('active') && this.setState(prevState => ({leftTap: !prevState.leftTap}))
     }
+    changeFilterVal = (e) => {
+        console.log(e);
+        this.setState({filter: e.target.value});
+    };
+
 
     toggleNav = (e) => {
         e.preventDefault();
@@ -27,7 +33,13 @@ class App extends Component {
                 <AppHeader navExpand={this.state.navExpand} toggleNav={this.toggleNav}/>
                 <main>
                     <div className={["side-wrapper", this.state.navExpand ? 'expanded' : 'hidden'].join(' ')}>
-                        <Sidebar toggleTap={this.changeActiveTap} activeTap={this.state.leftTap} navExpand={this.state.navExpand}/>
+                        <Sidebar
+                            toggleTap={this.changeActiveTap}
+                            activeTap={this.state.leftTap}
+                            navExpand={this.state.navExpand}
+                            changeFilter={this.changeFilterVal}
+                            filterVal={this.state.filter}
+                        />
                     </div>
                     <div className={["map-wrapper", this.state.navExpand ? 'contraction' : 'Expansion'].join(' ')}>
                         <Map/>
