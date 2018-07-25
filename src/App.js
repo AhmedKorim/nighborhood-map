@@ -6,11 +6,17 @@ import Sidebar from "./components/Layout/Sidebar";
 
 class App extends Component {
     state = {
-        navExpand: true
+        navExpand: true,
+        leftTap: false
+    };
+    changeActiveTap = (e) => {
+        e.preventDefault();
+        this.setState(prevState => ({leftTap: !prevState.leftTap}))
     }
+
     toggleNav = (e) => {
         e.preventDefault();
-        console.log(e);
+        console.log('click');
         this.setState(prevState => ({navExpand: !prevState.navExpand}))
     }
 
@@ -20,7 +26,7 @@ class App extends Component {
                 <AppHeader navExpand={this.state.navExpand} toggleNav={this.toggleNav}/>
                 <main>
                     <div className={["side-wrapper", this.state.navExpand ? 'expanded' : 'hidden'].join(' ')}>
-                        <Sidebar navExpand={this.state.navExpand}/>
+                        <Sidebar toggleTap={this.changeActiveTap} activeTap={this.state.leftTap} navExpand={this.state.navExpand}/>
                     </div>
                     <div className={["map-wrapper", this.state.navExpand ? 'contraction' : 'Expansion'].join(' ')}>
                         <Map/>

@@ -19,7 +19,11 @@ body {
   .main-header h1 {
     text-align: center;
     margin: 0;
-    color: #F3F3F3; }
+    color: #F3F3F3;
+    text-transform: capitalize;
+    font-weight: 300;
+    word-spacing: .2rem;
+    letter-spacing: .02rem; }
 
 .button-link {
   color: #E80E84;
@@ -67,7 +71,7 @@ main {
   main .side-wrapper {
     height: 100%;
     background-color: #2E2E2E;
-    width: 23.3333333333%;
+    width: 240px;
     position: absolute;
     z-index: 15;
     transition: transform ease-in .3s;
@@ -76,15 +80,40 @@ main {
       transform: translate3d(-100%, 0, 0); }
     main .side-wrapper aside {
       position: absolute;
+      padding: 1rem 0;
       width: 100%;
       height: 100%; }
+      main .side-wrapper aside nav {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        main .side-wrapper aside nav > div:not(.border) {
+          text-align: center;
+          width: 40%;
+          transition: all .4s ease; }
+          main .side-wrapper aside nav > div:not(.border) .button-link {
+            display: block;
+            width: 100%; }
+          main .side-wrapper aside nav > div:not(.border).active {
+            background-color: #3a3a3a; }
+        main .side-wrapper aside nav .border {
+          transition: all .5s ease-in-out;
+          position: absolute;
+          width: 40%;
+          height: 2px;
+          background-color: #E80E84;
+          left: 10%;
+          bottom: 0; }
+          main .side-wrapper aside nav .border.right {
+            transform: translate3d(100%, 0, 0); }
   main .map-wrapper {
     width: 100%;
     height: 100%;
     margin-left: auto;
     transition: width ease-in .3s; }
     main .map-wrapper.contraction {
-      width: 76.6666666667%; }
+      width: calc(100% - 240px); }
 
 /*----------------------------------
   sidebar
