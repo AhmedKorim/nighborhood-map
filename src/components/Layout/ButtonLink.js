@@ -1,14 +1,16 @@
 import React from 'react';
 
 const ButtonLink = (props) => {
+    const {label, classNames, click, children} = props;
+
     return (
         <a href="#"
            role="button"
-           aria-label={props.label ? props.label : null}
-           onClick={props.click} className={["button-link", props.classNames].join(' ')}>
-            <span className="btn-content" tabIndex="-1">
-            <i className="material-icons ">{props.children}</i>
-            </span>
+           aria-label={label ? props.label : null}
+           onClick={click} className={["button-link", classNames].join(' ')}>
+            <div className="btn-content" tabIndex="-1">
+                {children.length ? <i className="material-icons " aria-hidden="true">{children}</i> : children}
+            </div>
         </a>
     )
 };

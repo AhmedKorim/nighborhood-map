@@ -10,22 +10,32 @@ class App extends Component {
         leftTap: true,
         activeTap: "left",
         filter: '',
+        formInput: 'clean'
     };
     changeActiveTap = (e) => {
         e.preventDefault();
-        !e.target.closest('div').classList.contains('active') && this.setState(prevState => ({leftTap: !prevState.leftTap}))
-    }
+        console.log(e.target.closest('.activeTab').classList.contains('activeTab'));
+        !e.target.closest('div').classList.contains('activeTab') && this.setState(prevState => ({leftTap: !prevState.leftTap}))
+    };
     changeFilterVal = (e) => {
         console.log(e);
         this.setState({filter: e.target.value});
     };
 
+    formInputBlur = (e) => {
+        e.target.parentElement.classList.remove('dirty');
+        this.setState({formInput: 'clean'});
+    };
+    formInputFocus = (e) => {
+        e.target.parentElement.classList.add('dirty');
+        this.setState({formInput: 'dirty'});
+    };
 
     toggleNav = (e) => {
         e.preventDefault();
         console.log('click');
         this.setState(prevState => ({navExpand: !prevState.navExpand}))
-    }
+    };
 
     render() {
         return (
@@ -39,6 +49,8 @@ class App extends Component {
                             navExpand={this.state.navExpand}
                             changeFilter={this.changeFilterVal}
                             filterVal={this.state.filter}
+                            blur={this.formInputBlur}
+                            focus={this.formInputFocus}
                         />
                     </div>
                     <div className={["map-wrapper", this.state.navExpand ? 'contraction' : 'Expansion'].join(' ')}>

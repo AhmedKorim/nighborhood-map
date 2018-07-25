@@ -7,6 +7,9 @@ this scss file isn't compilable with this work flow i used IDE watcher to compil
 /*----------------------------------
   framework
 ----------------------------------*/
+* {
+  box-sizing: border-box !important; }
+
 .button-link .btn-content:hover, .button-link .btn-content:active, .button-link .btn-content:focus, .button-link:focus, .form-input input {
   outline: none;
   box-shadow: none;
@@ -15,22 +18,64 @@ this scss file isn't compilable with this work flow i used IDE watcher to compil
 .button-link {
   display: block;
   color: #E80E84;
-  transition: all ease-in-out .3s;
+  transition: all ease-in-out .1s;
   position: relative;
   text-decoration: none; }
   .button-link .btn-content {
+    position: relative;
+    overflow: hidden;
     display: block; }
+    .button-link .btn-content .effect {
+      position: absolute;
+      z-index: 334;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      background-color: rgba(232, 14, 132, 0.5);
+      transition: all .3s ease; }
+      .button-link .btn-content .effect.active-effect {
+        opacity: 1; }
   .button-link:focus {
     color: #E80E84;
     text-decoration: none; }
     .button-link:focus .btn-content {
       box-shadow: 0 0 30px 3px #E80E84; }
   .button-link .material-icons {
-    font-size: 1.8rem;
-    padding: 1rem; }
+    font-size: 1.8rem; }
 
 .form-input {
-  position: relative; }
+  position: relative;
+  padding: .3rem; }
+  .form-input .material-icons {
+    position: absolute;
+    width: 10%;
+    right: 0;
+    top: 0;
+    color: #E80E84;
+    opacity: .8; }
+  .form-input.dirty label {
+    font-size: .6rem;
+    transform: translate3d(0, -110%, 0); }
+  .form-input.dirty .active {
+    width: 100%;
+    z-index: 2;
+    box-shadow: 0 0 12px 1px rgba(232, 14, 132, 0.6); }
+  .form-input .tail {
+    transition: .3s ease-in-out width;
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: #E80E84;
+    width: 0%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto; }
+    .form-input .tail.stationary {
+      width: 100%;
+      opacity: .4; }
   .form-input label {
     transition: all ease .4s;
     position: absolute;
@@ -43,15 +88,12 @@ this scss file isn't compilable with this work flow i used IDE watcher to compil
     width: 100%;
     border: none;
     background-color: transparent;
-    color: #fff;
-    border-bottom: 1px solid red; }
-  .form-input.dirty label {
-    transfrom: translate3d(0, -100%, 0); }
+    color: #fff; }
 
 body {
   margin: 0;
   padding-top: 63px;
-  font-family: sans-serif; }
+  font-family: 'Roboto', sans-serif; }
 
 .main-header {
   background-color: #2E2E2E;
@@ -60,6 +102,8 @@ body {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12); }
+  .main-header .side-nav-toggle .button-link {
+    padding: 1rem; }
   .main-header h1 {
     text-align: center;
     margin: 0;
@@ -101,6 +145,9 @@ main {
   position: relative;
   z-index: 5;
   /*----------------------------------
+  sidebar
+----------------------------------*/
+  /*----------------------------------
     aside
   ----------------------------------*/ }
   main .side-wrapper {
@@ -140,13 +187,46 @@ main {
         width: 40%;
         height: 2px;
         background-color: #E80E84;
+        box-shadow: 0 0 10px 1px rgba(232, 14, 132, 0.4);
         left: 10%;
         bottom: 0; }
         main aside nav .border.right {
           transform: translate3d(100%, 0, 0); }
     main aside .content {
-      padding: 1.5rem; }
+      padding: 1rem;
+      /*----------------------------------
+        locaions list
+      ----------------------------------*/ }
+      main aside .content .locations ul {
+        margin-top: 1rem;
+        padding: 0;
+        list-style: none; }
+        main aside .content .locations ul li .button-link .material-icons {
+          padding: 0; }
+        main aside .content .locations ul li .list-content {
+          padding: .5rem .3rem;
+          background-color: #3a3a3a;
+          margin-bottom: .3rem;
+          font-size: .8rem;
+          color: #F3F3F3;
+          text-transform: capitalize;
+          display: flex;
+          justify-content: space-between;
+          box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12); }
+          main aside .content .locations ul li .list-content .icon {
+            width: 7%; }
+            main aside .content .locations ul li .list-content .icon i {
+              font-size: 1.3rem;
+              color: #E80E84; }
+          main aside .content .locations ul li .list-content .loc-title {
+            text-align: center;
+            width: 100%;
+            font-size: .75rem;
+            font-weight: 300; }
 
+/*----------------------------------
+  map
+----------------------------------*/
 .map-wrapper {
   width: 100%;
   height: 100%;
@@ -157,9 +237,6 @@ main {
 
 /*----------------------------------
   sidebar
-----------------------------------*/
-/*----------------------------------
-  foucs style
 ----------------------------------*/
 
 /*# sourceMappingURL=index.css.map */

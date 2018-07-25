@@ -4,19 +4,19 @@ import ButtonLink from "./ButtonLink";
 import Input from "./InputFeild";
 
 const Sidebar = (props) => {
-    const {toggleTap, activeTap, filterVal, changeFilter, clean, focus} = props;
+    const {toggleTap, activeTap, filterVal, changeFilter, focus ,blur} = props;
     return (
         <aside>
             <div className="wrapper">
                 <nav className="aside-nav">
                     <div
-                        className={activeTap ? 'active' : ''}>
+                        className={activeTap ? 'activeTab' : ''}>
                         <ButtonLink
                             label={"show list of places"}
                             click={toggleTap}
                         >place</ButtonLink></div>
                     <div
-                        className={props.activeTap ? '' : 'active'}>
+                        className={props.activeTap ? '' : 'activeTab'}>
                         <ButtonLink click={toggleTap}
                                     label={"search for places"}
                         >search</ButtonLink>
@@ -33,9 +33,9 @@ const Sidebar = (props) => {
                                 change={changeFilter}
                                 label={'filter places'}
                                 placeholder={"Enter to filter"}
-                                clean={clean}
+                                blur={blur}
                                 focus={focus}
-                            />
+                            >filter_list</Input>
                         </div>
                         <div className="locations list">
                             <List/>

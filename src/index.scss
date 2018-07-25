@@ -12,20 +12,45 @@ $color: #E80E84;
 /*----------------------------------
   framework
 ----------------------------------*/
+* {
+  box-sizing: border-box !important;
+
+}
+
 %clearFocus {
   outline: none;
   box-shadow: none;
   border: none;
 }
 
+%fous-style {
+
+}
+
 // components
 .button-link {
   display: block;
   color: $color;
-  transition: all ease-in-out .3s;
+  transition: all ease-in-out .1s;
   position: relative;
   text-decoration: none;
   .btn-content {
+    position: relative;
+    overflow: hidden;
+    .effect {
+      position: absolute;
+      z-index: 334;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      background-color: transparentize($color, .5);
+      transition: all .3s ease;
+      &.active-effect {
+        opacity: 1;
+      }
+    }
     &:hover, &:active, &:focus {
       @extend %clearFocus;
     }
@@ -34,7 +59,6 @@ $color: #E80E84;
   &:focus {
     .btn-content {
       box-shadow: 0 0 30px 3px $color;
-
     }
     color: $color;
     text-decoration: none;
@@ -42,13 +66,48 @@ $color: #E80E84;
   }
   .material-icons {
     font-size: 1.8rem;
-    padding: 1rem;
   }
   // if it is a child of header element
 }
 
 .form-input {
+  .material-icons {
+    position: absolute;
+    width: 10%;
+    right: 0;
+    top: 0;
+    color: $color;
+    opacity: .8;
+  }
   position: relative;
+  padding: .3rem;
+  &.dirty {
+    label {
+      font-size: .6rem;
+      transform: translate3d(0, -110%, 0);
+    }
+    .active {
+      width: 100%;
+      z-index: 2;
+      box-shadow: 0 0 12px 1px transparentize($color, .4);
+    }
+  }
+  .tail {
+    transition: .3s ease-in-out width;
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: $color;
+    width: 0%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    &.stationary {
+      width: 100%;
+      opacity: .4;
+    }
+  }
   label {
     transition: all ease .4s;
     position: absolute;
@@ -56,6 +115,7 @@ $color: #E80E84;
     color: $lightColor;
     font-weight: 300;
     font-size: .8rem;
+
   }
 
   input {
@@ -65,19 +125,14 @@ $color: #E80E84;
     @extend %clearFocus;
     background-color: transparent;
     color: #fff;
-    border-bottom: 1px solid red;
   }
-  &.dirty {
-    label {
-      transfrom: translate3d(0, -100%, 0);
-    }
-  }
+
 }
 
 body {
   margin: 0;
   padding-top: 63px;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .main-header {
@@ -89,6 +144,12 @@ body {
   box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
   0px 5px 8px 0px rgba(0, 0, 0, 0.14),
   0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+  .side-nav-toggle {
+    .button-link {
+      padding: 1rem;
+    }
+  }
+
   > div {
     //width: (100%/3);
   }
@@ -148,6 +209,9 @@ main {
   display: flex;
   position: relative;
   z-index: 5;
+  /*----------------------------------
+  sidebar
+----------------------------------*/
   .side-wrapper {
     height: 100%;
     background-color: $mainColor;
@@ -197,6 +261,7 @@ main {
         width: 40%;
         height: 2px;
         background-color: $color;
+        box-shadow: 0 0 10px 1px transparentize($color, .6);
         left: 10%;
         bottom: 0;
         &.right {
@@ -205,11 +270,58 @@ main {
       }
     }
     .content {
-      padding: 1.5rem;
+      padding: 1rem;
+      /*----------------------------------
+        locaions list
+      ----------------------------------*/
+      .locations {
+        ul {
+          margin-top: 1rem;
+          padding: 0;
+          list-style: none;
+          li {
+            .button-link {
+              .material-icons {
+                padding: 0;
+              }
+            }
+            .list-content {
+              padding: .5rem .3rem;
+              background-color: $secColor;
+              margin-bottom: .3rem;
+              font-size: .8rem;
+              color: $lightColor;
+              text-transform: capitalize;
+              display: flex;
+              justify-content: space-between;
+              box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+              0px 5px 8px 0px rgba(0, 0, 0, 0.14),
+              0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+              .icon {
+                i {
+                  font-size: 1.3rem;
+                  color: $color;
+                }
+                width: 7%;
+              }
+              .loc-title {
+                text-align: center;
+                width: 100%;
+                font-size: .75rem;
+                font-weight: 300;
+              }
+            }
+          }
+        }
+      }
     }
   }
 
 }
+
+/*----------------------------------
+  map
+----------------------------------*/
 
 .map-wrapper {
   width: 100%;
@@ -223,7 +335,4 @@ main {
 
 /*----------------------------------
   sidebar
-----------------------------------*/
-/*----------------------------------
-  foucs style
 ----------------------------------*/
