@@ -7,11 +7,12 @@ import Sidebar from "./components/Layout/Sidebar";
 class App extends Component {
     state = {
         navExpand: true,
-        leftTap: false
+        leftTap: true,
+        activeTap:"left"
     };
     changeActiveTap = (e) => {
         e.preventDefault();
-        this.setState(prevState => ({leftTap: !prevState.leftTap}))
+        !e.target.closest('div').classList.contains('active') && this.setState(prevState => ({leftTap: !prevState.leftTap}))
     }
 
     toggleNav = (e) => {
