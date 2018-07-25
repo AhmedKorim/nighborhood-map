@@ -178,7 +178,8 @@ main {
         transition: all .4s ease; }
         main aside nav > div:not(.border) .button-link {
           display: block;
-          width: 100%; }
+          width: 100%;
+          padding: .3rem; }
         main aside nav > div:not(.border).active {
           background-color: #3a3a3a; }
       main aside nav .border {

@@ -14,9 +14,9 @@ class App extends Component {
     };
     changeActiveTap = (e) => {
         e.preventDefault();
-        console.log(e.target.closest('.activeTab').classList.contains('activeTab'));
-        !e.target.closest('div').classList.contains('activeTab') && this.setState(prevState => ({leftTap: !prevState.leftTap}))
+        !e.target.closest('.Tab').classList.contains('active') && this.setState(prevState => ({leftTap: !prevState.leftTap}))
     };
+
     changeFilterVal = (e) => {
         console.log(e);
         this.setState({filter: e.target.value});

@@ -4,19 +4,19 @@ import ButtonLink from "./ButtonLink";
 import Input from "./InputFeild";
 
 const Sidebar = (props) => {
-    const {toggleTap, activeTap, filterVal, changeFilter, focus ,blur} = props;
+    const {toggleTap, activeTap, filterVal, changeFilter, focus, blur} = props;
     return (
         <aside>
             <div className="wrapper">
                 <nav className="aside-nav">
                     <div
-                        className={activeTap ? 'activeTab' : ''}>
+                        className={['Tab', activeTap ? 'active' : ''].join(' ')}>
                         <ButtonLink
                             label={"show list of places"}
                             click={toggleTap}
                         >place</ButtonLink></div>
                     <div
-                        className={props.activeTap ? '' : 'activeTab'}>
+                        className={['Tab', activeTap ? '' : 'active'].join(' ')}>
                         <ButtonLink click={toggleTap}
                                     label={"search for places"}
                         >search</ButtonLink>
