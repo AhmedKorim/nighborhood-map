@@ -22,15 +22,14 @@ class ButtonLink extends React.Component {
     render() {
         const {label, classNames, children} = this.props;
         return (
-            <a href="#"
-               role="button"
+            <button
                aria-label={label ? label : null}
                onClick={this.clicked} className={["button-link", classNames].join(' ')}>
                 <div className="btn-content" tabIndex="-1">
                     <div ref={(el) => this.effect = el} className="effect"></div>
                     {children.length ? <i className="material-icons " aria-hidden="true">{children}</i> : children}
                 </div>
-            </a>
+            </button>
         )
     }
 

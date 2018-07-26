@@ -26,6 +26,10 @@ $primary: green;
 
 // components
 .button-link {
+  cursor: pointer;
+  width: 100%;
+  background: transparent;
+  border: none;
   display: block;
   padding: 0;
   color: $color;
@@ -370,8 +374,10 @@ main {
       padding: .5rem 1rem;
       .modal-close {
         margin-left: auto;
-        padding: .2rem 1rem;
         .button-link {
+          .btn-content {
+            padding: .2rem 1rem;
+          }
           color: $lightColor;
         }
       }
@@ -399,12 +405,15 @@ main {
       padding: .5rem 1rem;
       div {
         box-sizing: border-box;
-        padding: 0 .4rem;
         height: 45px;
-        .btn-content {
-          line-height: 45px;
-          text-align: center;
+        .button-link {
+          .btn-content {
+            width: 60px;
+            line-height: 45px;
+            text-align: center;
+          }
         }
+
       }
       .ok {
         .button-link {

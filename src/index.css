@@ -16,6 +16,10 @@ this scss file isn't compilable with this work flow i used IDE watcher to compil
   border: none; }
 
 .button-link {
+  cursor: pointer;
+  width: 100%;
+  background: transparent;
+  border: none;
   display: block;
   padding: 0;
   color: #E80E84;
@@ -264,10 +268,11 @@ main {
       align-items: center;
       padding: .5rem 1rem; }
       .modal-overlay .modal .modal-header .modal-close {
-        margin-left: auto;
-        padding: .2rem 1rem; }
+        margin-left: auto; }
         .modal-overlay .modal .modal-header .modal-close .button-link {
           color: #F3F3F3; }
+          .modal-overlay .modal .modal-header .modal-close .button-link .btn-content {
+            padding: .2rem 1rem; }
       .modal-overlay .modal .modal-header .modal-title {
         width: 100%;
         color: #F3F3F3; }
@@ -286,9 +291,9 @@ main {
       padding: .5rem 1rem; }
       .modal-overlay .modal .modal-footer div {
         box-sizing: border-box;
-        padding: 0 .4rem;
         height: 45px; }
-        .modal-overlay .modal .modal-footer div .btn-content {
+        .modal-overlay .modal .modal-footer div .button-link .btn-content {
+          width: 60px;
           line-height: 45px;
           text-align: center; }
       .modal-overlay .modal .modal-footer .ok .button-link {

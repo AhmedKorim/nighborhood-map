@@ -1,5 +1,5 @@
 import React from "react";
-import locaions from '../Map/locations'
+import {locaions} from '../../data/locations'
 import ButtonLink from "./ButtonLink";
 
 const List = () => {

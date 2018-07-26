@@ -4,6 +4,7 @@ import Map from "./components/Map/Map";
 import AppHeader from "./components/Layout/AppHeader";
 import Sidebar from "./components/Layout/Sidebar";
 import Modal from "./components/Layout/Modal";
+import {url, fetchingDate} from "./data/Forsquare";
 
 class App extends Component {
     state = {
@@ -11,7 +12,8 @@ class App extends Component {
         leftTap: true,
         activeTap: "left",
         filter: '',
-        formInput: 'clean'
+        formInput: 'clean',
+        data: null
     };
     changeActiveTap = (e) => {
         console.log(e);
@@ -22,6 +24,19 @@ class App extends Component {
         console.log(e);
         this.setState({filter: e.target.value});
     };
+
+    componentDidMount() {
+        if (!localStorage.getItem('ahmed')) {
+            fetch(url)
+                .then(resp => resp.json())
+                .then(data => localStorage.setItem('ahmed', JSON.stringify(data)));
+        } else {
+            this.setState({data: JSON.parse(localStorage.getItem('ahmed'))}, () => {
+                    console.log(this.state.data)
+                }
+            );
+        }
+    }
 
     formInputBlur = (e) => {
         e.target.parentElement.classList.remove('dirty');
@@ -53,14 +68,14 @@ class App extends Component {
                         />
                     </div>
                     <div className={["map-wrapper", this.state.navExpand ? 'contraction' : 'Expansion'].join(' ')}>
-                        <Map/>
+                        <Map locations={this.state.data}/>
                     </div>
                 </main>
                 <footer>
                 </footer>
-                {/*<Modal>*/}
-                    {/*<img src="//via.placeholder.com/500x1200/3000"/>*/}
-                {/*</Modal>*/}
+                {/*  <Modal>
+                    <img src="//via.placeholder.com/500x1200/3000"/>
+                </Modal>*/}
             </div>
         );
     }
