@@ -12,7 +12,7 @@ class Map extends React.Component {
             // creating map
             const map = new window.google.maps.Map(this.state.map, {
                 center: {lat: 40.7413549, lng: -73.9980244},
-                zoom: 13,
+                zoom: 11,
                 mapTypeControl: true,
             });
             // creating info window
@@ -32,24 +32,21 @@ class Map extends React.Component {
                 });
                 markers.push(marker);
             }
-
-            // this.setState(prevState => ({markers: prevState.markers.concat(markers)}));
-            console.log(this.state.markers);
-            for (const marker of markers) {
-                marker.setMap(map);
-                console.log(marker);
-                bounds.extend(marker.position);
-            }
-            map.fitBounds(bounds);
+            this.setState(prevState => ({markers: prevState.markers.concat(markers)}), () => {
+                for (const marker of markers) {
+                    marker.setMap(map);
+                    bounds.extend(marker.position);
+                }
+                map.fitBounds(bounds);
+            });
         }
     };
 
     componentDidMount() {
-            this.mapInit();
+        this.mapInit();
     }
 
     render() {
-
         return (
             <div className={"map"} role="application" ref={(el) => this.state.map = el}></div>
         )

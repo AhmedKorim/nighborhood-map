@@ -2,14 +2,16 @@ import React from "react";
 import ButtonLink from "./ButtonLink";
 
 const List = (props) => {
-
+    const {locations, changeMarker} = props;
+    console.log(locations);
     return (
         <div className="locations">
             <ul>
-                {props.locations && props.locations.map(location => (<li
+                {locations && locations.map(location => (<li
                         key={location.key}>
                         <ButtonLink
                             label={`show more information about ${location.name}`}
+                            click={(e) => changeMarker(e,location.key)}
                         >
                             <div className="list-content">
                                 <div className="icon">

@@ -16,7 +16,10 @@ class App extends Component {
         filter: '',
         formInput: 'clean',
         data: null,
-        ready: false
+        filteredData: null,
+        ready: false,
+        modalViability: false,
+        activeLocation: {}
     };
     changeActiveTap = (e) => {
         console.log(e);
@@ -27,6 +30,11 @@ class App extends Component {
         console.log(e);
         this.setState({filter: e.target.value});
     };
+    closeModal = () => {
+        console.log('clicked');
+        this.setState({modalViability: false})
+    }
+
 
     componentDidMount() {
         if (!localStorage.getItem('ahmed')) {
@@ -48,6 +56,12 @@ class App extends Component {
         }
     }
 
+    changeMarker = (e, locId) => {
+        this.setState({
+            activeLocation: this.state.data.find(el => el.key === locId),
+            modalViability: true
+        })
+    };
     formInputBlur = (e) => {
         e.target.parentElement.classList.remove('dirty');
         this.setState({formInput: 'clean'});
@@ -78,6 +92,7 @@ class App extends Component {
                 <main>
                     <div className={["side-wrapper", this.state.navExpand ? 'expanded' : 'hidden'].join(' ')}>
                         <Sidebar
+                            changeMarker={this.changeMarker}
                             locations={this.state.data}
                             toggleTap={this.changeActiveTap}
                             activeTap={this.state.leftTap}
@@ -94,9 +109,11 @@ class App extends Component {
                 </main>
                 <footer>
                 </footer>
-                {/* <Modal>
+                {this.state.modalViability && <Modal
+                    close={this.closeModal}
+                >
                     <img src="//via.placeholder.com/500x1200/3000"/>
-                </Modal>*/}
+                </Modal>}
             </div>
         );
     }

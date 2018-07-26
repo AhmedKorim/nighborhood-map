@@ -257,6 +257,7 @@ main {
   justify-content: center;
   align-items: center; }
   .modal-overlay .modal {
+    animation: fadeIn .5s ease-in-out;
     height: 75%;
     box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 20px 1px rgba(0, 0, 0, 0.22);
     background-color: #3a3a3a;
@@ -300,5 +301,16 @@ main {
           text-align: center; }
       .modal-overlay .modal .modal-footer .ok .button-link {
         color: green; }
+
+/*----------------------------------
+  animations
+----------------------------------*/
+@keyframes fadeIn {
+  0% {
+    opacity: .7;
+    transform: translate3d(-1%, -1%, 0); }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0); } }
 
 /*# sourceMappingURL=index.css.map */

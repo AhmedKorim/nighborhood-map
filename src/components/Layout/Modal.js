@@ -3,14 +3,14 @@ import ButtonLink from "./ButtonLink";
 
 class Modal extends React.Component {
     render() {
-        const {closeModal} = this.props;
+        console.log(this.props);
         return (
-            <div className='modal-overlay' onClick={closeModal}>
+            <div className='modal-overlay' onClick={this.props.close}>
                 <div className="modal" tabIndex="0">
                     <div className="modal-header">
                         <div className="modal-title"><h3> modal title</h3></div>
                         <div className="modal-close">
-                            <ButtonLink click={closeModal}>close</ButtonLink>
+                            <ButtonLink click={this.props.close}>close</ButtonLink>
                         </div>
                     </div>
                     <div className="modal-body">
@@ -18,10 +18,10 @@ class Modal extends React.Component {
                     </div>
                     <div className="modal-footer">
                         <div className="close-modal">
-                            <ButtonLink click={closeModal}><span>Close</span></ButtonLink>
+                            <ButtonLink click={this.props.close}><span>Close</span></ButtonLink>
                         </div>
                         <div className="ok">
-                            <ButtonLink click={closeModal}><span>OK</span></ButtonLink>
+                            <ButtonLink click={this.props.close}><span>OK</span></ButtonLink>
                         </div>
                     </div>
                 </div>
