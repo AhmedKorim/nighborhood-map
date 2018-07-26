@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7a1f7a23-f0be-41c4-aa45-65baf410189d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/ButtonLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/ButtonLink.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/list.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/list.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Map/Map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map/Map.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,8 +41,8 @@
       <file leaf-file-name="Map.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Map/Map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+            <state relative-caret-position="343">
+              <caret line="23" column="51" lean-forward="true" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -235,12 +227,12 @@
       <workItem from="1532472797822" duration="6842000" />
       <workItem from="1532508372439" duration="21208000" />
       <workItem from="1532559518965" duration="25905000" />
-      <workItem from="1532591017406" duration="5224000" />
+      <workItem from="1532591017406" duration="6547000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78034000" />
+    <option name="totallyTimeSpent" value="79357000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1612" height="872" extended-state="6" />
@@ -254,7 +246,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.32458565" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Quokka" order="14" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32320443" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.38121548" />
       <window_info anchor="bottom" id="RNConsole" order="10" weight="0.32872927" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.13431877" />
       <window_info anchor="bottom" id="Get Gist" order="7" weight="0.32872927" />
@@ -666,8 +658,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Map/Map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+        <state relative-caret-position="343">
+          <caret line="23" column="51" lean-forward="true" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
         </state>
       </provider>
     </entry>

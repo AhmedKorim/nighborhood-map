@@ -20,6 +20,18 @@ class Map extends React.Component {
             // create map bounds
             const bounds = new window.google.maps.LatLngBounds();
             const markers = [];
+            const populateInfoWindow = (marker, infoWindow) => {
+                if (infoWindow.marker !== marker) {
+                    infoWindow.setContent(marker.title);
+                    infoWindow.marker = marker;
+                    infoWindow.addListener('closeclick', function () {
+                        console.log("closed");
+                        infoWindow.marker = null;
+                    });
+                    infoWindow.open(map, marker)
+
+                }
+            };
             //
             for (const [index, postion] of this.props.locations.entries()) {
                 const markerData = {name: postion.name, location: {lat: postion.location.lat, lng: postion.location.lng}};
@@ -29,6 +41,9 @@ class Map extends React.Component {
                     position: location,
                     animation: window.google.maps.Animation.DROP,
                     id: index,
+                });
+                marker.addListener('click', function () {
+                    populateInfoWindow(this, infoWindow)
                 });
                 markers.push(marker);
             }
@@ -40,7 +55,8 @@ class Map extends React.Component {
                 map.fitBounds(bounds);
             });
         }
-    };
+    }
+    ;
 
     componentDidMount() {
         this.mapInit();
