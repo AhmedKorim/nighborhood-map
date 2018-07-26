@@ -13,7 +13,6 @@ class App extends Component {
         formInput: 'clean'
     };
     changeActiveTap = (e) => {
-        e.preventDefault();
         !e.target.closest('.Tab').classList.contains('active') && this.setState(prevState => ({leftTap: !prevState.leftTap}))
     };
 
@@ -32,8 +31,6 @@ class App extends Component {
     };
 
     toggleNav = (e) => {
-        e.preventDefault();
-        console.log('click');
         this.setState(prevState => ({navExpand: !prevState.navExpand}))
     };
 
