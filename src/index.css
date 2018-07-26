@@ -205,7 +205,9 @@ main {
       main aside .content .locations ul {
         margin-top: 1rem;
         padding: 0;
-        list-style: none; }
+        list-style: none;
+        max-height: 500px;
+        overflow: auto; }
         main aside .content .locations ul li .button-link .btn-content {
           margin-bottom: .3rem; }
         main aside .content .locations ul li .button-link .material-icons {

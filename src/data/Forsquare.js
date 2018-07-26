@@ -3,8 +3,8 @@ const clientSecret = 'FE0WP1ETLKAODLF1TUWXBZYFHP3BIRZ1OJCOUIRRT31ASROL';
 const v = '20171227';
 const ll = "40.7243,-74.0018";
 
-const limit = "30";
-const radius = "3333";
+const limit = "50";
+const radius = "1000";
 const categories = {
     Food: "4d4b7105d754a06374d81259",
     Library: "4bf58dd8d48988d12f941735",

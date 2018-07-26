@@ -18,7 +18,6 @@ class ButtonLink extends React.Component {
         this.props.click && this.props.click(e);
 
     };
-
     render() {
         const {label, classNames, children} = this.props;
         return (

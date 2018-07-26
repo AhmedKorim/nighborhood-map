@@ -4,7 +4,7 @@ import ButtonLink from "./ButtonLink";
 import Input from "./InputFeild";
 
 const Sidebar = (props) => {
-    const {toggleTap, activeTap, filterVal, changeFilter, focus, blur} = props;
+    const {toggleTap, activeTap, filterVal, changeFilter, focus, blur, locations} = props;
     return (
         <aside>
             <div className="wrapper">
@@ -38,7 +38,7 @@ const Sidebar = (props) => {
                             >filter_list</Input>
                         </div>
                         <div className="locations list">
-                            <List/>
+                            <List locations={locations}/>
                         </div>
                     </div>
                 </div>

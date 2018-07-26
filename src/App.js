@@ -3,8 +3,10 @@ import './App.css';
 import Map from "./components/Map/Map";
 import AppHeader from "./components/Layout/AppHeader";
 import Sidebar from "./components/Layout/Sidebar";
+import scriptLoader from 'react-async-script-loader';
+
+import {url} from "./data/Forsquare";
 import Modal from "./components/Layout/Modal";
-import {url, fetchingDate} from "./data/Forsquare";
 
 class App extends Component {
     state = {
@@ -13,7 +15,8 @@ class App extends Component {
         activeTap: "left",
         filter: '',
         formInput: 'clean',
-        data: null
+        data: null,
+        ready: false
     };
     changeActiveTap = (e) => {
         console.log(e);
@@ -31,10 +34,16 @@ class App extends Component {
                 .then(resp => resp.json())
                 .then(data => localStorage.setItem('ahmed', JSON.stringify(data)));
         } else {
-            this.setState({data: JSON.parse(localStorage.getItem('ahmed'))}, () => {
-                    console.log(this.state.data)
-                }
-            );
+            const apiData = JSON.parse(localStorage.getItem('ahmed'));
+            this.setState({
+                data: apiData.response.venues.map(place => (
+                    {
+                        name: place.name,
+                        location: place.location,
+                        ll: place.location.labeledLatLngs
+                    }
+                ))
+            })
         }
     }
 
@@ -51,6 +60,16 @@ class App extends Component {
         this.setState(prevState => ({navExpand: !prevState.navExpand}))
     };
 
+    componentWillReceiveProps({isScriptLoaded, isScriptLoadSucceed}) {
+        if (isScriptLoaded && !this.props.isScriptLoaded) { // load finished
+            if (isScriptLoadSucceed) {
+                if (window.google) {
+                    this.setState({ready: true});
+                }
+            }
+        } else this.props.onError()
+    };
+
     render() {
         return (
             <div>
@@ -58,6 +77,7 @@ class App extends Component {
                 <main>
                     <div className={["side-wrapper", this.state.navExpand ? 'expanded' : 'hidden'].join(' ')}>
                         <Sidebar
+                            locations={this.state.data}
                             toggleTap={this.changeActiveTap}
                             activeTap={this.state.leftTap}
                             navExpand={this.state.navExpand}
@@ -68,12 +88,12 @@ class App extends Component {
                         />
                     </div>
                     <div className={["map-wrapper", this.state.navExpand ? 'contraction' : 'Expansion'].join(' ')}>
-                        <Map locations={this.state.data}/>
+                        {this.state.ready && (<Map locations={this.state.data} leftTap={this.state.leftTap}/>)}
                     </div>
                 </main>
                 <footer>
                 </footer>
-                {/*  <Modal>
+               {/* <Modal>
                     <img src="//via.placeholder.com/500x1200/3000"/>
                 </Modal>*/}
             </div>
@@ -81,4 +101,8 @@ class App extends Component {
     }
 }
 
-export default App;
+export default scriptLoader(
+    [
+        'https://maps.googleapis.com/maps/api/js?key=AIzaSyCXbw5wy_UfZMPbf7iKGZO7q0ktmdgLkXw',
+    ]
+)(App)
