@@ -16,7 +16,7 @@ class App extends Component {
         filter: '',
         formInput: 'clean',
         data: null,
-        filteredData: null,
+        filteredPlaces: null,
         ready: false,
         modalViability: false,
         activeLocation: {},
@@ -28,8 +28,12 @@ class App extends Component {
     };
 
     changeFilterVal = (e) => {
-        console.log(e);
-        this.setState({filter: e.target.value});
+        const value = e.target ? e.target.value : null;
+        console.log(value);
+        this.setState({
+            filter: value,
+            filteredPlaces: value === '' ? this.state.data : this.state.data.filter(place => place.name.toLowerCase().indexOf(value.toLowerCase()) >= 0)
+        })
     };
     closeModal = () => {
         this.setState({modalViability: false})
@@ -43,16 +47,15 @@ class App extends Component {
                 .then(data => localStorage.setItem('ahmed', JSON.stringify(data)));
         } else {
             const apiData = JSON.parse(localStorage.getItem('ahmed'));
-            this.setState({
-                data: apiData.response.venues.map(place => (
-                    {
-                        key: place.id,
-                        name: place.name,
-                        location: place.location,
-                        ll: place.location.labeledLatLngs
-                    }
-                ))
-            })
+            const data = apiData.response.venues.map(place => (
+                {
+                    key: place.id,
+                    name: place.name,
+                    location: place.location,
+                    ll: place.location.labeledLatLngs
+                }
+            ))
+            this.setState({data, filteredPlaces: data})
         }
     }
 
@@ -93,7 +96,7 @@ class App extends Component {
                     <div className={["side-wrapper", this.state.navExpand ? 'expanded' : 'hidden'].join(' ')}>
                         <Sidebar
                             changeMarker={this.changeMarker}
-                            locations={this.state.data}
+                            locations={this.state.filteredPlaces}
                             toggleTap={this.changeActiveTap}
                             activeTap={this.state.leftTap}
                             navExpand={this.state.navExpand}
@@ -105,7 +108,7 @@ class App extends Component {
                     </div>
                     <div className={["map-wrapper", this.state.navExpand ? 'contraction' : 'Expansion'].join(' ')}>
                         {this.state.ready && (<Map
-                            locations={this.state.data}
+                            locations={this.state.filteredPlaces}
                             modalViability={this.state.modalViability}
                             content={this.changeMarker}/>)}
                     </div>

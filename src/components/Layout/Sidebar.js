@@ -4,30 +4,33 @@ import ButtonLink from "./ButtonLink";
 import Input from "./InputFeild";
 
 const Sidebar = (props) => {
-    const {toggleTap, activeTap, filterVal, changeFilter, focus, blur, locations ,changeMarker} = props;
+    const {toggleTap, activeTap, filterVal, changeFilter, focus, blur, locations, changeMarker} = props;
+
     return (
         <aside>
             <div className="wrapper">
-                <nav className="aside-nav">
-                    <div
-                        className={['Tab', activeTap ? 'active' : ''].join(' ')}>
-                        <ButtonLink
-                            label={"show list of places"}
-                            click={toggleTap}
-                        >place</ButtonLink></div>
-                    <div
-                        className={['Tab', activeTap ? '' : 'active'].join(' ')}>
-                        <ButtonLink click={toggleTap}
-                                    label={"search for places"}
-                        >search</ButtonLink>
-                    </div>
-                    <div
-                        className={["border", activeTap ? "" : "right"].join(' ')}>
-                    </div>
-                </nav>
+                <div className="tools">
+                    <nav className="aside-nav">
+                        <div
+                            className={['Tab', activeTap ? 'active' : ''].join(' ')}>
+                            <ButtonLink
+                                label={"show list of places"}
+                                click={toggleTap}
+                            >place</ButtonLink></div>
+                        <div
+                            className={['Tab', activeTap ? '' : 'active'].join(' ')}>
+                            <ButtonLink click={toggleTap}
+                                        label={"search for places"}
+                            >search</ButtonLink>
+                        </div>
+                        <div
+                            className={["border", activeTap ? "" : "right"].join(' ')}>
+                        </div>
+                    </nav>
+                </div>
                 <div className="content">
                     <div className="places">
-                        <div>
+                        <div className="filter">
                             <Input
                                 val={filterVal}
                                 change={changeFilter}
@@ -37,7 +40,8 @@ const Sidebar = (props) => {
                                 focus={focus}
                             >filter_list</Input>
                         </div>
-                        <div className="locations list">
+                        <div className="locations list"
+                             >
                             <List
                                 changeMarker={changeMarker}
                                 locations={locations}/>

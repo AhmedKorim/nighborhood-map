@@ -5,7 +5,7 @@ class Map extends React.Component {
         map: null,
         locations: null,
         markers: [],
-        isRendered: false
+        isRendered: false,
     };
 
     mapInit = () => {
@@ -48,6 +48,7 @@ class Map extends React.Component {
                         }
 
                     }
+
                     streetViewService.getPanoramaByLocation(marker.position, raduis, getSreetView);
                 }
             }
@@ -79,7 +80,9 @@ class Map extends React.Component {
 
     componentDidMount() {
         this.mapInit();
+        console.log(this.state.markers);
     }
+
 
     render() {
         return (
