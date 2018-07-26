@@ -3,6 +3,7 @@ import './App.css';
 import Map from "./components/Map/Map";
 import AppHeader from "./components/Layout/AppHeader";
 import Sidebar from "./components/Layout/Sidebar";
+import Modal from "./components/Layout/Modal";
 
 class App extends Component {
     state = {
@@ -13,6 +14,7 @@ class App extends Component {
         formInput: 'clean'
     };
     changeActiveTap = (e) => {
+        console.log(e);
         !e.target.closest('.Tab').classList.contains('active') && this.setState(prevState => ({leftTap: !prevState.leftTap}))
     };
 
@@ -56,6 +58,9 @@ class App extends Component {
                 </main>
                 <footer>
                 </footer>
+                {/*<Modal>*/}
+                    {/*<img src="//via.placeholder.com/500x1200/3000"/>*/}
+                {/*</Modal>*/}
             </div>
         );
     }

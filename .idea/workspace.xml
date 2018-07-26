@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a1f7a23-f0be-41c4-aa45-65baf410189d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/ButtonLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/ButtonLink.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/Modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,14 +18,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.60796916">
+    <splitter split-orientation="horizontal" split-proportion="0.4929306">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="ButtonLink.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Layout/ButtonLink.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="377">
-                  <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+                <state relative-caret-position="29">
+                  <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
                 </state>
               </provider>
             </entry>
@@ -29,7 +33,7 @@
           <file leaf-file-name="Sidebar.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Layout/Sidebar.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="435">
+                <state relative-caret-position="29">
                   <caret line="18" column="55" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
@@ -41,8 +45,8 @@
           <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/App.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="406">
-                  <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+                <state relative-caret-position="408">
+                  <caret line="60" column="16" selection-start-line="60" selection-start-column="19" selection-end-line="62" selection-end-column="27" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -53,8 +57,11 @@
           <file leaf-file-name="Modal.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/Layout/Modal.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="232">
-                  <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+                <state relative-caret-position="272">
+                  <caret line="16" column="45" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -66,8 +73,9 @@
           <file leaf-file-name="index.scss" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/index.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="322">
-                  <caret line="248" column="21" selection-start-line="248" selection-start-column="21" selection-end-line="248" selection-end-column="21" />
+                <state relative-caret-position="288">
+                  <caret line="45" column="50" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="50" />
+                  <caret line="48" column="52" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="52" />
                 </state>
               </provider>
             </entry>
@@ -93,15 +101,6 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="locations.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/Map/locations.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="232">
-                  <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-                </state>
-              </provider>
-            </entry>
-          </file>
         </leaf>
       </split-second>
     </splitter>
@@ -110,8 +109,9 @@
     <findStrings>
       <find>h1</find>
       <find>form-i</find>
-      <find>button</find>
       <find>button-link</find>
+      <find>button</find>
+      <find>.button-link</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -130,10 +130,10 @@
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/components/Layout/list.js" />
         <option value="$PROJECT_DIR$/src/components/Layout/Sidebar.js" />
-        <option value="$PROJECT_DIR$/src/index.scss" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/Layout/Modal.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/Layout/ButtonLink.js" />
+        <option value="$PROJECT_DIR$/src/index.scss" />
       </list>
     </option>
   </component>
@@ -160,8 +160,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="208" />
-    <option name="y" value="-11" />
+    <option name="x" value="42" />
+    <option name="y" value="-9" />
     <option name="width" value="800" />
     <option name="height" value="749" />
   </component>
@@ -254,12 +254,12 @@
       <workItem from="1532425636380" duration="2023000" />
       <workItem from="1532472797822" duration="6842000" />
       <workItem from="1532508372439" duration="21208000" />
-      <workItem from="1532559518965" duration="1017000" />
+      <workItem from="1532559518965" duration="7186000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47922000" />
+    <option name="totallyTimeSpent" value="54091000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1612" height="872" extended-state="6" />
@@ -270,10 +270,10 @@
       <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32596686" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32458565" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Quokka" order="14" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32872927" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32320443" />
       <window_info anchor="bottom" id="RNConsole" order="10" weight="0.32872927" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.529563" />
       <window_info anchor="bottom" id="Get Gist" order="7" weight="0.32872927" />
@@ -543,13 +543,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-313">
-          <caret line="59" column="27" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Layout/AppHeader.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="419">
@@ -603,7 +596,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Layout/Sidebar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
+        <state relative-caret-position="29">
           <caret line="18" column="55" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -611,34 +604,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="248" column="21" selection-start-line="248" selection-start-column="21" selection-end-line="248" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Layout/Modal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+        <state relative-caret-position="272">
+          <caret line="16" column="45" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="14" column="30" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
+        <state relative-caret-position="408">
+          <caret line="60" column="16" selection-start-line="60" selection-start-column="19" selection-end-line="62" selection-end-column="27" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Layout/ButtonLink.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
+        <state relative-caret-position="29">
+          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="45" column="50" selection-start-line="45" selection-start-column="39" selection-end-line="45" selection-end-column="50" />
+          <caret line="48" column="52" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="52" />
         </state>
       </provider>
     </entry>

@@ -1,9 +1,22 @@
 import React from 'react';
 
 class ButtonLink extends React.Component {
-    clicked = (e) => {
+    effect = null;
+    state = {
+        active: false
+    }
+
+    clicked =(e)=> {
         e.preventDefault();
-        this.props.click();
+        this.effect.classList.add('active-effect');
+        this.setState({active: true})
+        setTimeout(() => {
+            this.effect.classList.contains('effect') && this.effect.classList.remove('active-effect');
+            this.setState({active: false})
+        }, 600);
+
+        this.props.click && this.props.click(e);
+
     };
 
     render() {
@@ -11,9 +24,10 @@ class ButtonLink extends React.Component {
         return (
             <a href="#"
                role="button"
-               aria-label={label ?label : null}
+               aria-label={label ? label : null}
                onClick={this.clicked} className={["button-link", classNames].join(' ')}>
                 <div className="btn-content" tabIndex="-1">
+                    <div ref={(el) => this.effect = el} className="effect"></div>
                     {children.length ? <i className="material-icons " aria-hidden="true">{children}</i> : children}
                 </div>
             </a>
