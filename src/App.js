@@ -19,7 +19,8 @@ class App extends Component {
         filteredData: null,
         ready: false,
         modalViability: false,
-        activeLocation: {}
+        activeLocation: {},
+        modalContent: null
     };
     changeActiveTap = (e) => {
         console.log(e);
@@ -31,7 +32,6 @@ class App extends Component {
         this.setState({filter: e.target.value});
     };
     closeModal = () => {
-        console.log('clicked');
         this.setState({modalViability: false})
     }
 
@@ -104,7 +104,10 @@ class App extends Component {
                         />
                     </div>
                     <div className={["map-wrapper", this.state.navExpand ? 'contraction' : 'Expansion'].join(' ')}>
-                        {this.state.ready && (<Map locations={this.state.data} leftTap={this.state.leftTap}/>)}
+                        {this.state.ready && (<Map
+                            locations={this.state.data}
+                            modalViability={this.state.modalViability}
+                            content={this.changeMarker}/>)}
                     </div>
                 </main>
                 <footer>
@@ -112,7 +115,7 @@ class App extends Component {
                 {this.state.modalViability && <Modal
                     close={this.closeModal}
                 >
-                    <img src="//via.placeholder.com/500x1200/3000"/>
+                    <div id="pano"></div>
                 </Modal>}
             </div>
         );

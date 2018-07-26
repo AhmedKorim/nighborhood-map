@@ -312,5 +312,8 @@ main {
   100% {
     opacity: 1;
     transform: translate3d(0, 0, 0); } }
+#pano {
+  width: 400px;
+  height: 400px; }
 
 /*# sourceMappingURL=index.css.map */

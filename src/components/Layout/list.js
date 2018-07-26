@@ -3,7 +3,6 @@ import ButtonLink from "./ButtonLink";
 
 const List = (props) => {
     const {locations, changeMarker} = props;
-    console.log(locations);
     return (
         <div className="locations">
             <ul>

@@ -5,18 +5,22 @@ class ButtonLink extends React.Component {
     state = {
         active: false
     };
-
+    timeOut;
     clicked = (e) => {
         e.preventDefault();
         this.effect.classList.add('active-effect');
         this.setState({active: true});
-        setTimeout(() => {
+        this.timeOut = setTimeout(() => {
             (this.effect && this.effect.classList.contains('effect')) && this.effect.classList.remove('active-effect');
             this.setState({active: false})
         }, 600);
         this.props.click && this.props.click(e);
 
     };
+
+    componentWillUnmount() {
+        window.clearTimeout(this.timeOut)
+    }
 
     render() {
         const {label, classNames, children} = this.props;
