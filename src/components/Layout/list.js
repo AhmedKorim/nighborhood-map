@@ -7,7 +7,7 @@ const List = (props) => {
         <div className="locations">
             <ul>
                 {props.locations && props.locations.map(location => (<li
-                        key={location.name}>
+                        key={location.key}>
                         <ButtonLink
                             label={`show more information about ${location.name}`}
                         >

@@ -38,6 +38,7 @@ class App extends Component {
             this.setState({
                 data: apiData.response.venues.map(place => (
                     {
+                        key: place.id,
                         name: place.name,
                         location: place.location,
                         ll: place.location.labeledLatLngs
@@ -93,7 +94,7 @@ class App extends Component {
                 </main>
                 <footer>
                 </footer>
-               {/* <Modal>
+                {/* <Modal>
                     <img src="//via.placeholder.com/500x1200/3000"/>
                 </Modal>*/}
             </div>

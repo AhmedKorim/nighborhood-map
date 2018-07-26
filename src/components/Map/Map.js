@@ -38,21 +38,19 @@ class Map extends React.Component {
             for (const marker of markers) {
                 marker.setMap(map);
                 console.log(marker);
-                bounds.extend(marker.location);
+                bounds.extend(marker.position);
             }
-            // map.fitBounds(bounds);
+            map.fitBounds(bounds);
         }
-    }
+    };
 
     componentDidMount() {
             this.mapInit();
-
     }
 
     render() {
 
         return (
-
             <div className={"map"} role="application" ref={(el) => this.state.map = el}></div>
         )
 
