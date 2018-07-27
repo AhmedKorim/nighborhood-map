@@ -3,17 +3,12 @@ import ButtonLink from "./ButtonLink";
 import 'react-perfect-scrollbar/dist/css/styles.css';
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
+
 const List = (props) => {
-    const {locations, changeMarker} = props;
-    const getStyle = ($el, style) => {
-        if (document.querySelector($el)) {
-            const st = window.getComputedStyle(document.querySelector($el))[style];
-            return +st.slice(0, st.length - 2);
-        }
-    };
+    const {locations, changeMarker,listHeight} = props;
     return (
         <div className="locations"
-             style={{height:`${getStyle('.side-wrapper', 'height') - getStyle('.tools', 'height') - getStyle('.filter', 'height') -30}px`}}>
+             style={listHeight}>
             <PerfectScrollbar>
                 <ul>
                     {locations && locations.map(location => (<li

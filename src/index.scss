@@ -13,6 +13,7 @@ $primary: green;
 /*----------------------------------
   framework
 ----------------------------------*/
+$headerHight: 63px;
 * {
   box-sizing: border-box !important;
 
@@ -39,7 +40,7 @@ $primary: green;
   .btn-content {
     display: block;
     position: relative;
-    overflow: hidden;
+    //overflow: hidden;
     .effect {
       position: absolute;
       z-index: 334;
@@ -51,6 +52,7 @@ $primary: green;
       transition: all .3s ease-in;
       &.active-effect {
         background-color: transparentize($lightColor, .8);
+        box-shadow: 0px 0px 15px transparentize(white, .9);
       }
     }
     &:focus {
@@ -96,7 +98,7 @@ $primary: green;
     transition: .3s ease-in-out width;
     position: absolute;
     bottom: 0;
-    height: 2px;
+    height: 1px;
     background-color: $color;
     width: 0%;
     left: 0;
@@ -120,7 +122,7 @@ $primary: green;
 
   input {
     display: block;
-    width: 100%;
+    width: 90%;
     border: none;
     @extend %clearFocus;
     background-color: transparent;
@@ -132,19 +134,32 @@ $primary: green;
 body {
   margin: 0;
   padding-top: 63px;
+  @media screen and (max-width: 920px) {
+    padding-top: 50px;
+
+  }
+
+  @media screen and (max-width: 320px) {
+    padding-top: 45px;
+  }
+
   font-family: 'Roboto', sans-serif;
 }
 
 .main-header {
+  overflow: hidden;
+  position: relative;
   background-color: $mainColor;
   height: 4rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
   0px 5px 8px 0px rgba(0, 0, 0, 0.14),
   0px 1px 14px 0px rgba(0, 0, 0, 0.12);
   .side-nav-toggle {
+    position: absolute;
+    left: 0;
     .button-link {
       .btn-content {
         padding: 1rem;
@@ -163,6 +178,12 @@ body {
     font-weight: 300;
     word-spacing: .2rem;
     letter-spacing: .02rem;
+    @media (max-width: 920px) {
+      font-size: 1.6rem;
+    }
+    @media (max-width: 450px) {
+      font-size: 1.3rem;
+    }
   }
 }
 
@@ -179,6 +200,17 @@ body {
   width: 100%;
   z-index: 8;
   top: 0;
+  height: 63px;
+  @media screen and (max-width: 920px) {
+    height: 50px;
+
+  }
+
+  @media screen and (max-width: 320px) {
+    height: 45px;
+
+  }
+
   .side-nav-toggle, .map-tools {
     .button-link {
       .btn-content {
@@ -210,6 +242,15 @@ body {
 ----------------------------------*/
 main {
   height: calc(100vh - 63px);
+  @media screen and (max-width: 920px) {
+    height: calc(100vh - 50px);
+
+  }
+
+  @media screen and (max-width: 320px) {
+    height: calc(100vh - 40px);
+  }
+
   display: flex;
   position: relative;
   z-index: 5;
@@ -241,7 +282,7 @@ main {
     width: 100%;
     height: 100%;
     .tools, .filter {
-      padding: .5rem 1rem;
+      padding: 1rem;
     }
     nav {
       position: relative;
@@ -369,28 +410,37 @@ main {
   align-items: center;
 
   .modal {
+    &:focus {
+      outline: none;
+    }
     &.fade {
       animation: fadeOut .4s ease-in-out;
     }
     animation: fadeIn .5s ease-in-out;
-    height: 75%;
+    //height: 75%;
     box-shadow: -12px 14px 20px -1px rgba(0, 0, 0, 0.2), 7px 12px 20px 0px rgba(0, 0, 0, 0.14), 7px 7px 20px 0px rgba(0, 0, 0, 0.22);
-    background-color: $secColor;
+    background-color: $mainColor;
     display: flex;
     flex-direction: column;
     > div {
       width: 100%;
     }
     .modal-header {
+      border-bottom: 1px solid $secColor;
       display: flex;
+      position: relative;
       justify-content: center;
       align-items: center;
       padding: .5rem 1rem;
       .modal-close {
-        margin-left: auto;
+        position: absolute;
+        right: .3rem;
         .button-link {
           .btn-content {
-            padding: .2rem 1rem;
+            padding: .6rem;
+            .material-icons {
+              font-size: 1rem;
+            }
           }
           color: $lightColor;
         }
@@ -401,6 +451,13 @@ main {
         h3 {
           text-align: center;
           font-size: 1.4rem;
+          @media (max-width: 920px) {
+            font-size: 1.2rem;
+          }
+          @media (max-width: 450px) {
+            font-size: 1.1rem;
+
+          }
           margin: 0;
           text-transform: capitalize;
         }
@@ -409,6 +466,7 @@ main {
 
     }
     .modal-body {
+      border-bottom: 1px solid $secColor;
       max-height: 100%;
       overflow-y: auto;
     }
@@ -416,7 +474,7 @@ main {
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      padding: .5rem 1rem;
+      padding: 0 .2rem;
       div {
         box-sizing: border-box;
         height: 45px;
@@ -459,7 +517,7 @@ main {
     transform: translate3d(0, 0, 0)
   }
   100% {
-    opacity:0;
+    opacity: 0;
     transform: translate3d(-1%, -1%, 0)
 
   }
@@ -478,6 +536,18 @@ main {
 }
 
 #pano {
-  width: 400px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
+}
+
+@media screen and (max-width: 920px) {
+
+}
+
+@media screen and (max-width: 750px) {
+
+}
+
+@media screen and (max-width: 320px) {
+
 }

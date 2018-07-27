@@ -7,6 +7,7 @@ import scriptLoader from 'react-async-script-loader';
 
 import {url} from "./data/Forsquare";
 import Modal from "./components/Layout/Modal";
+import {getStyle} from "./data/tools";
 
 class App extends Component {
     state = {
@@ -20,10 +21,10 @@ class App extends Component {
         ready: false,
         modalViability: false,
         activeLocation: {},
-        modalContent: null
+        modalContent: null,
+        dimensions: {}
     };
     changeActiveTap = (e) => {
-        console.log(e);
         !e.target.closest('.Tab').classList.contains('active') && this.setState(prevState => ({leftTap: !prevState.leftTap}))
     };
 
@@ -37,10 +38,19 @@ class App extends Component {
     };
     closeModal = () => {
         this.setState({modalViability: false})
-    }
-
+    };
 
     componentDidMount() {
+        (function (appComponent) {
+            window.addEventListener('resize', function () {
+                appComponent.setState(prevState => ({
+                    dimensions: {
+                        ...prevState.dimensions,
+                        listHeight: {height: `${getStyle('.side-wrapper', 'height') - getStyle('.tools', 'height') - getStyle('.filter', 'height') - 15}px`}
+                    }
+                }))
+            });
+        })(this);
         if (!localStorage.getItem('ahmed')) {
             fetch(url)
                 .then(resp => resp.json())
@@ -55,8 +65,15 @@ class App extends Component {
                     ll: place.location.labeledLatLngs
                 }
             ))
-            this.setState({data, filteredPlaces: data})
+            this.setState({
+                data,
+                filteredPlaces: data,
+                dimensions: {
+                    listHeight: {height: `${getStyle('.side-wrapper', 'height') - getStyle('.tools', 'height') - getStyle('.filter', 'height') - 15}px`}
+                }
+            })
         }
+
     }
 
     changeMarker = (e, locId) => {
@@ -66,6 +83,7 @@ class App extends Component {
         })
     };
     formInputBlur = (e) => {
+        if (e.target.value !== '') return;
         e.target.parentElement.classList.remove('dirty');
         this.setState({formInput: 'clean'});
     };
@@ -95,6 +113,7 @@ class App extends Component {
                 <main>
                     <div className={["side-wrapper", this.state.navExpand ? 'expanded' : 'hidden'].join(' ')}>
                         <Sidebar
+                            dimensions={this.state.dimensions}
                             changeMarker={this.changeMarker}
                             locations={this.state.filteredPlaces}
                             toggleTap={this.changeActiveTap}

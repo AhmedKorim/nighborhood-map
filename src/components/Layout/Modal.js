@@ -39,7 +39,7 @@ class Modal extends React.Component {
 
     componentDidMount() {
         this.lastActiveElement = document.activeElement;
-        document.querySelector('.modal button').focus();
+        document.querySelector('.modal').focus();
         this.focusEl = Array.from(document.querySelectorAll('.modal button'));
     }
 
@@ -55,7 +55,7 @@ class Modal extends React.Component {
                     <div className="modal-header">
                         <div className="modal-title"><h3> modal title</h3></div>
                         <div className="modal-close">
-                            <ButtonLink click={this.props.close}>close</ButtonLink>
+                            <ButtonLink click={this.overClose}>close</ButtonLink>
                         </div>
                     </div>
                     <div className="modal-body">
@@ -63,10 +63,10 @@ class Modal extends React.Component {
                     </div>
                     <div className="modal-footer">
                         <div className="close-modal">
-                            <ButtonLink click={this.props.close}><span>Close</span></ButtonLink>
+                            <ButtonLink click={this.overClose}><span>Close</span></ButtonLink>
                         </div>
                         <div className="ok">
-                            <ButtonLink click={this.props.close}><span>OK</span></ButtonLink>
+                            <ButtonLink click={this.overClose}><span>OK</span></ButtonLink>
                         </div>
                     </div>
                 </div>

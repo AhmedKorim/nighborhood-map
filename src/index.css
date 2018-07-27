@@ -28,8 +28,7 @@ this scss file isn't compilable with this work flow i used IDE watcher to compil
   text-decoration: none; }
   .button-link .btn-content {
     display: block;
-    position: relative;
-    overflow: hidden; }
+    position: relative; }
     .button-link .btn-content .effect {
       position: absolute;
       z-index: 334;
@@ -40,7 +39,8 @@ this scss file isn't compilable with this work flow i used IDE watcher to compil
       background-color: rgba(243, 243, 243, 0);
       transition: all .3s ease-in; }
       .button-link .btn-content .effect.active-effect {
-        background-color: rgba(243, 243, 243, 0.2); }
+        background-color: rgba(243, 243, 243, 0.2);
+        box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1); }
   .button-link:focus {
     text-decoration: none; }
     .button-link:focus .btn-content {
@@ -69,7 +69,7 @@ this scss file isn't compilable with this work flow i used IDE watcher to compil
     transition: .3s ease-in-out width;
     position: absolute;
     bottom: 0;
-    height: 2px;
+    height: 1px;
     background-color: #E80E84;
     width: 0%;
     left: 0;
@@ -88,7 +88,7 @@ this scss file isn't compilable with this work flow i used IDE watcher to compil
     font-size: .8rem; }
   .form-input input {
     display: block;
-    width: 100%;
+    width: 90%;
     border: none;
     background-color: transparent;
     color: #fff; }
@@ -97,16 +97,27 @@ body {
   margin: 0;
   padding-top: 63px;
   font-family: 'Roboto', sans-serif; }
+  @media screen and (max-width: 920px) {
+    body {
+      padding-top: 50px; } }
+  @media screen and (max-width: 320px) {
+    body {
+      padding-top: 45px; } }
 
 .main-header {
+  overflow: hidden;
+  position: relative;
   background-color: #2E2E2E;
   height: 4rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12); }
-  .main-header .side-nav-toggle .button-link .btn-content {
-    padding: 1rem; }
+  .main-header .side-nav-toggle {
+    position: absolute;
+    left: 0; }
+    .main-header .side-nav-toggle .button-link .btn-content {
+      padding: 1rem; }
   .main-header h1 {
     text-align: center;
     margin: 0;
@@ -115,6 +126,12 @@ body {
     font-weight: 300;
     word-spacing: .2rem;
     letter-spacing: .02rem; }
+    @media (max-width: 920px) {
+      .main-header h1 {
+        font-size: 1.6rem; } }
+    @media (max-width: 450px) {
+      .main-header h1 {
+        font-size: 1.3rem; } }
 
 .map {
   width: 100%;
@@ -127,7 +144,14 @@ body {
   position: absolute;
   width: 100%;
   z-index: 8;
-  top: 0; }
+  top: 0;
+  height: 63px; }
+  @media screen and (max-width: 920px) {
+    .main-header {
+      height: 50px; } }
+  @media screen and (max-width: 320px) {
+    .main-header {
+      height: 45px; } }
   .main-header .side-nav-toggle .button-link .btn-content, .main-header .map-tools .button-link .btn-content {
     padding: 1rem; }
   .main-header .side-nav-toggle .button-link .material-icons, .main-header .map-tools .button-link .material-icons {
@@ -153,6 +177,12 @@ main {
   /*----------------------------------
     aside
   ----------------------------------*/ }
+  @media screen and (max-width: 920px) {
+    main {
+      height: calc(100vh - 50px); } }
+  @media screen and (max-width: 320px) {
+    main {
+      height: calc(100vh - 40px); } }
   main .side-wrapper {
     height: 100%;
     background-color: #2E2E2E;
@@ -170,7 +200,7 @@ main {
     width: 100%;
     height: 100%; }
     main aside .tools, main aside .filter {
-      padding: .5rem 1rem; }
+      padding: 1rem; }
     main aside nav {
       position: relative;
       display: flex;
@@ -267,26 +297,32 @@ main {
   align-items: center; }
   .modal-overlay .modal {
     animation: fadeIn .5s ease-in-out;
-    height: 75%;
     box-shadow: -12px 14px 20px -1px rgba(0, 0, 0, 0.2), 7px 12px 20px 0px rgba(0, 0, 0, 0.14), 7px 7px 20px 0px rgba(0, 0, 0, 0.22);
-    background-color: #3a3a3a;
+    background-color: #2E2E2E;
     display: flex;
     flex-direction: column; }
+    .modal-overlay .modal:focus {
+      outline: none; }
     .modal-overlay .modal.fade {
       animation: fadeOut .4s ease-in-out; }
     .modal-overlay .modal > div {
       width: 100%; }
     .modal-overlay .modal .modal-header {
+      border-bottom: 1px solid #3a3a3a;
       display: flex;
+      position: relative;
       justify-content: center;
       align-items: center;
       padding: .5rem 1rem; }
       .modal-overlay .modal .modal-header .modal-close {
-        margin-left: auto; }
+        position: absolute;
+        right: .3rem; }
         .modal-overlay .modal .modal-header .modal-close .button-link {
           color: #F3F3F3; }
           .modal-overlay .modal .modal-header .modal-close .button-link .btn-content {
-            padding: .2rem 1rem; }
+            padding: .6rem; }
+            .modal-overlay .modal .modal-header .modal-close .button-link .btn-content .material-icons {
+              font-size: 1rem; }
       .modal-overlay .modal .modal-header .modal-title {
         width: 100%;
         color: #F3F3F3; }
@@ -295,14 +331,21 @@ main {
           font-size: 1.4rem;
           margin: 0;
           text-transform: capitalize; }
+          @media (max-width: 920px) {
+            .modal-overlay .modal .modal-header .modal-title h3 {
+              font-size: 1.2rem; } }
+          @media (max-width: 450px) {
+            .modal-overlay .modal .modal-header .modal-title h3 {
+              font-size: 1.1rem; } }
     .modal-overlay .modal .modal-body {
+      border-bottom: 1px solid #3a3a3a;
       max-height: 100%;
       overflow-y: auto; }
     .modal-overlay .modal .modal-footer {
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      padding: .5rem 1rem; }
+      padding: 0 .2rem; }
       .modal-overlay .modal .modal-footer div {
         box-sizing: border-box;
         height: 45px; }
@@ -338,7 +381,7 @@ main {
     opacity: 1;
     transform: translate3d(0, 0, 0); } }
 #pano {
-  width: 400px;
-  height: 400px; }
+  width: 200px;
+  height: 200px; }
 
 /*# sourceMappingURL=index.css.map */

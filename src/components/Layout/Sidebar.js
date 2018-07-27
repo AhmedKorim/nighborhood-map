@@ -3,9 +3,9 @@ import List from "./list";
 import ButtonLink from "./ButtonLink";
 import Input from "./InputFeild";
 
-const Sidebar = (props) => {
-    const {toggleTap, activeTap, filterVal, changeFilter, focus, blur, locations, changeMarker} = props;
 
+const Sidebar = (props) => {
+    const {toggleTap, activeTap, filterVal, changeFilter, focus, blur, locations, changeMarker, dimensions} = props;
     return (
         <aside>
             <div className="wrapper">
@@ -29,7 +29,7 @@ const Sidebar = (props) => {
                     </nav>
                 </div>
                 <div className="content">
-                    <div className="places">
+                    {activeTap && <div className="places">
                         <div className="filter">
                             <Input
                                 val={filterVal}
@@ -41,12 +41,15 @@ const Sidebar = (props) => {
                             >filter_list</Input>
                         </div>
                         <div className="locations list"
-                             >
+                        >
                             <List
+                                listHeight={dimensions.listHeight}
                                 changeMarker={changeMarker}
                                 locations={locations}/>
                         </div>
-                    </div>
+                    </div> || <div>
+                        <h3 style={{color: "#eee" , textAlign: "center", fontSize:"1.3rem",fontWeight:"300" }}>coming soon map searches and draw tool</h3>
+                    </div>}
                 </div>
             </div>
         </aside>
