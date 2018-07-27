@@ -27,14 +27,19 @@ class App extends Component {
     changeActiveTap = (e) => {
         !e.target.closest('.Tab').classList.contains('active') && this.setState(prevState => ({leftTap: !prevState.leftTap}))
     };
-
+    mapComponent = null;
     changeFilterVal = (e) => {
         const value = e.target ? e.target.value : null;
         console.log(value);
         this.setState({
             filter: value,
-            filteredPlaces: value === '' ? this.state.data : this.state.data.filter(place => place.name.toLowerCase().indexOf(value.toLowerCase()) >= 0)
-        })
+            filteredPlaces: value === '' ? this.state.data : this.state.data.filter(place => place.name.toLowerCase().indexOf(value.toLowerCase()) >= 0),
+            clearedPlaces: value === '' ? this.state.data : this.state.data.filter(place => place.name.toLowerCase().indexOf(value.toLowerCase()) < 0)
+
+        }, () => {
+            this.mapComponent.clearMarkers(this.state.clearedPlaces);
+            }
+        )
     };
     closeModal = () => {
         this.setState({modalViability: false})
@@ -127,6 +132,8 @@ class App extends Component {
                     </div>
                     <div className={["map-wrapper", this.state.navExpand ? 'contraction' : 'Expansion'].join(' ')}>
                         {this.state.ready && (<Map
+                            ref={mapcom => this.mapComponent = mapcom}
+                            ref={mapcom => this.mapComponent = mapcom}
                             locations={this.state.filteredPlaces}
                             modalViability={this.state.modalViability}
                             content={this.changeMarker}/>)}

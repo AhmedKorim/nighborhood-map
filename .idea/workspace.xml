@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a1f7a23-f0be-41c4-aa45-65baf410189d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Map/Map.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map/Map.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -12,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.34254497">
+    <splitter split-orientation="horizontal" split-proportion="0.1">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="index.scss" pinned="false" current-in-tab="true">
@@ -64,8 +65,8 @@
           <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/App.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="119" column="37" selection-start-line="119" selection-start-column="28" selection-end-line="119" selection-end-column="37" />
+                <state relative-caret-position="398">
+                  <caret line="39" column="42" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="42" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -76,8 +77,8 @@
           <file leaf-file-name="Map.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Map/Map.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="469">
-                  <caret line="77" column="45" selection-start-line="77" selection-start-column="45" selection-end-line="77" selection-end-column="45" />
+                <state relative-caret-position="311">
+                  <caret line="87" column="27" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="27" />
                 </state>
               </provider>
             </entry>
@@ -115,7 +116,6 @@
       <find>a</find>
       <find>loca</find>
       <find>aside</find>
-      <find>filter</find>
       <find>margin-bo</find>
       <find>.filter</find>
       <find>ul</find>
@@ -130,6 +130,7 @@
       <find>form-i</find>
       <find>FORM</find>
       <find>bo</find>
+      <find>filter</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -155,10 +156,10 @@
         <option value="$PROJECT_DIR$/src/data/tools.js" />
         <option value="$PROJECT_DIR$/src/components/Layout/list.js" />
         <option value="$PROJECT_DIR$/src/components/Layout/Modal.js" />
-        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/Layout/Sidebar.js" />
         <option value="$PROJECT_DIR$/src/index.scss" />
         <option value="$USER_HOME$/Desktop/google-map-api-master/scripts.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/Map/Map.js" />
       </list>
     </option>
@@ -294,7 +295,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109748000" />
+    <option name="totallyTimeSpent" value="112270000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1612" height="872" extended-state="6" />
@@ -668,16 +669,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="119" column="37" selection-start-line="119" selection-start-column="28" selection-end-line="119" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Layout/InputFeild.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="464">
@@ -722,10 +713,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="39" column="42" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Map/Map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="77" column="45" selection-start-line="77" selection-start-column="45" selection-end-line="77" selection-end-column="45" />
+        <state relative-caret-position="311">
+          <caret line="87" column="27" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="27" />
         </state>
       </provider>
     </entry>

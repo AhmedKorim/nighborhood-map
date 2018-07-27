@@ -65,29 +65,41 @@ class Map extends React.Component {
                 position: location,
                 animation: window.google.maps.Animation.DROP,
                 id: index,
-                map: that.state.map
             });
             marker.addListener('click', function () {
                 that.populateInfoWindow(this, that.state.infoWindow);
                 that.props.content()
             });
             that.setState(prevState => ({markers: prevState.markers.concat(marker)}), () => {
-                for (const marker of that.state.markers) {
-                  that.bounds.extend(marker.position);
-                }
-                that.state.map.fitBounds(that.bounds);
-
+                that.drawMarkers();
             });
         }
 
     };
+
+    drawMarkers = () => {
+        for (const marker of this.state.markers) {
+            marker.setMap(this.state.map);
+            this.bounds.extend(marker.position);
+        }
+        this.state.map.fitBounds(this.bounds);
+    };
+    clearMarkers = (cleardMarkers) => {
+        this.drawMarkers();
+        const markersToClear = this.state.markers.filter(marker => cleardMarkers.find(cleardMarker => cleardMarker.name === marker.title));
+        for (const marker of markersToClear) {
+            marker.setMap(null);
+            this.bounds.extend(marker.position);
+        }
+        this.state.map.fitBounds(this.bounds);
+
+    }
 
 
     mapInit = () => {
         const {content, modalViability} = this.props;
         if (window.google && this.state.mapConatienr && this.props.locations) {
             this.createMap();
-
         }
     };
 
