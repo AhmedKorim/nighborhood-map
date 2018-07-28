@@ -33,7 +33,6 @@ export const fetchImges = (venuesID) => {
     return new Promise((resolve, reject) => {
         fetch(imgUrl).then(response => {
             if (response.ok) {
-                console.log('ok');
                 return response.json()
             }
             reject('api quota exceeded')

@@ -26,10 +26,10 @@ class Alert extends React.Component {
 
     render() {
         return (
-            <div ref={el => this.alertBody = el} onClick={this.close} className="alertBody">
+            <div ref={el => this.alertBody = el}  role="alert" onClick={this.close} className="alertBody">
                 <div className="alert">
                     <div className="message">
-                        <p>{this.props.message}</p>
+                        <p aria-live="assertive">{this.props.message}</p>
                     </div>
                     <div className="icons">
                         <i className="material-icons">close</i>

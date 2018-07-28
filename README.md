@@ -39,7 +39,7 @@ an clicking the marker will open the modal with more data of that place
  
  - run development server `npm start `  port 3000 (localhost:3000)
 
- - creating optimized build version `npm  build`
+ - creating optimized build version `npm  run build`
  
  ## author
  

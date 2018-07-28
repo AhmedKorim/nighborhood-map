@@ -48,7 +48,6 @@ class App extends Component {
 
     changeFilterVal = (e) => {
         const value = e.target ? e.target.value : null;
-        console.log(value);
         this.setState({
                 filter: value,
                 filteredPlaces: value === '' ? this.state.data : this.state.data.filter(place => place.name.toLowerCase().indexOf(value.toLowerCase()) >= 0),
@@ -104,7 +103,6 @@ class App extends Component {
     }
 
     changeMarker = (e, locId) => {
-        console.log(locId);
         this.setState({
                 activeLocation: this.state.data.find(el => el.key === locId),
                 modalViability: !e

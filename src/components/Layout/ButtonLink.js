@@ -8,7 +8,6 @@ class ButtonLink extends React.Component {
     timeOut;
     clicked = (e) => {
         e.preventDefault();
-        console.log('used');
         this.effect.classList.add('active-effect');
         this.setState({active: true});
         this.timeOut = setTimeout(() => {
