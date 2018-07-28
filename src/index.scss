@@ -514,17 +514,17 @@ main {
           width: 100%
         }
       }
-      @media all and (max-width:700px) {
+      @media all and (max-width: 700px) {
         height: 400px;
         width: 300px;
-        .place-over-view{
+        .place-over-view {
           flex-wrap: wrap;
-          .data{
+          .data {
             width: 100%;
             padding-bottom: 1rem;
           }
         }
-        #pano{
+        #pano {
           width: 100%;
         }
       }
@@ -551,6 +551,48 @@ main {
           color: $primary;
         }
       }
+    }
+  }
+}
+
+.alertBody {
+  width: 400px;
+  height: 60px;
+  position: fixed;
+  top: 100px;
+  right: 50%;
+  z-index: 666;
+
+  //animation: alert .6s infinite ease-in-out;
+
+  .alert {
+    cursor: pointer;
+    transition: all 1s ease-in-out;
+    opacity: 0;
+    box-shadow: -12px 14px 20px -1px rgba(0, 0, 0, 0.2), 7px 12px 20px 0px rgba(0, 0, 0, 0.14), 7px 7px 20px 0px rgba(0, 0, 0, 0.22);
+    background-color: $mainColor;
+    display: flex;
+    align-items: center;
+    border-radius: .25rem;
+    padding: .75rem 0;
+    .message {
+      margin-left: auto;
+      width: 85%;
+      color: $lightColor;
+      font-weight: 300;
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+    .icons {
+      margin-right: auto;
+      color: $color;
+    }
+  }
+  &.visable {
+    .alert {
+      opacity: 1;
     }
   }
 }

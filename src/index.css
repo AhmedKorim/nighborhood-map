@@ -400,6 +400,37 @@ main {
       .modal-overlay .modal .modal-footer .ok .button-link {
         color: green; }
 
+.alertBody {
+  width: 400px;
+  height: 60px;
+  position: fixed;
+  top: 100px;
+  right: 50%;
+  z-index: 666; }
+  .alertBody .alert {
+    cursor: pointer;
+    transition: all 1s ease-in-out;
+    opacity: 0;
+    box-shadow: -12px 14px 20px -1px rgba(0, 0, 0, 0.2), 7px 12px 20px 0px rgba(0, 0, 0, 0.14), 7px 7px 20px 0px rgba(0, 0, 0, 0.22);
+    background-color: #2E2E2E;
+    display: flex;
+    align-items: center;
+    border-radius: .25rem;
+    padding: .75rem 0; }
+    .alertBody .alert .message {
+      margin-left: auto;
+      width: 85%;
+      color: #F3F3F3;
+      font-weight: 300; }
+      .alertBody .alert .message p {
+        margin: 0;
+        padding: 0; }
+    .alertBody .alert .icons {
+      margin-right: auto;
+      color: #E80E84; }
+  .alertBody.visable .alert {
+    opacity: 1; }
+
 /*----------------------------------
   animations
 ----------------------------------*/

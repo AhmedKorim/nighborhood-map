@@ -2,7 +2,6 @@ const clientID = '33YTSGDO4CLJBKDY10UB0NLS41DURHM3JVVFDH1W50YUMV2Z';
 const clientSecret = 'FE0WP1ETLKAODLF1TUWXBZYFHP3BIRZ1OJCOUIRRT31ASROL';
 const v = '20171227';
 const ll = "52.520008,13.404954";
-const venuesID = "43695300f964a5208c291fe3";
 const limit = "100";
 const radius = "3000";
 const categories = {
@@ -14,7 +13,6 @@ const categories = {
 };
 export const url = `https://api.foursquare.com/v2/venues/search?ll=${ll}
 &categoryId=${Object.values(categories)}&radius=${radius}&client_id=${clientID}&client_secret=${clientSecret}&v=${v}&limit=${limit}`;
-const imgUrl = `https://api.foursquare.com/v2/venues/${venuesID}/photos?limit=9&client_id=${clientID}&client_secret=${clientSecret}&v=${v}`;
 
 export const fetchingPlaces = (url) => {
     return new Promise((resolve, reject) => {
@@ -27,7 +25,7 @@ export const fetchingPlaces = (url) => {
             if (data) {
                 resolve(data)
             }
-        })
+        }).catch(err => reject('an issue with for Square api'))
     });
 };
 export const fetchImges = (venuesID) => {
@@ -48,7 +46,7 @@ export const fetchImges = (venuesID) => {
                     source
                 })
             }
-        })
+        }).catch(err => reject('an issue with for Square api'))
     })
 
 };

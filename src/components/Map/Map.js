@@ -2,18 +2,17 @@ import React from 'react';
 
 class Map extends React.Component {
     state = {
-        mapConatienr: null,
         locations: null,
         markers: [],
         isRendered: false,
         bounds: null
     };
-
+    mapConatienr= null;
     bounds = new window.google.maps.LatLngBounds();
     createMap = () => {
 
         this.setState({
-                map: new window.google.maps.Map(this.state.mapConatienr, {
+                map: new window.google.maps.Map(this.mapConatienr, {
                     center: {lat: 52.520008, lng: 13.404954},
                     zoom: 9,
                     mapTypeControl: true,
@@ -97,7 +96,9 @@ class Map extends React.Component {
 
 
     mapInit = () => {
-        if (window.google && this.state.mapConatienr && this.props.locations) {
+        if (window.google && this.mapConatienr && this.props.locations) {
+
+            console.log(window.gm_authFailure);
             this.createMap();
         }
     };
@@ -124,7 +125,7 @@ class Map extends React.Component {
 
     render() {
         return (
-            <div className={"map"} role="application" ref={(el) => this.state.mapConatienr = el}></div>
+            <div className={"map"} role="application" ref={(el) => this.mapConatienr = el}></div>
         )
 
     }

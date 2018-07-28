@@ -7,6 +7,7 @@ import scriptLoader from 'react-async-script-loader';
 import Modal from "./components/Layout/Modal";
 import {getStyle} from "./data/tools";
 import {fetchingPlaces, url} from "./data/Forsquare";
+import Alert from "./components/Layout/Alert";
 
 class App extends Component {
     state = {
@@ -21,12 +22,30 @@ class App extends Component {
         modalViability: false,
         activeLocation: null,
         modalContent: null,
-        dimensions: {}
+        dimensions: {},
+        errorMessage: null
     };
     changeActiveTap = (e) => {
         !e.target.closest('.Tab').classList.contains('active') && this.setState(prevState => ({leftTap: !prevState.leftTap}))
     };
+
+
     mapComponent = null;
+    alertTimeout = null;
+
+    alertEr = (error) => {
+        this.setState({errorMessage: error});
+        this.alertTimeout = setTimeout(() => {
+            this.setState({errorMessage: null})
+        }, 7000);
+    };
+
+    closeAlert = () => {
+        this.setState({errorMessage: null});
+        window.clearTimeout(this.alertTimeout);
+    };
+
+
     changeFilterVal = (e) => {
         const value = e.target ? e.target.value : null;
         console.log(value);
@@ -43,9 +62,9 @@ class App extends Component {
     closeModal = () => {
         this.setState({modalViability: false})
     };
-
-    componentDidMount() {
+    resize = () => {
         (function (appComponent) {
+
             window.addEventListener('resize', function () {
                 appComponent.setState(prevState => ({
                     dimensions: {
@@ -55,7 +74,9 @@ class App extends Component {
                 }))
             });
         })(this);
+    }
 
+    fetch = () => {
         fetchingPlaces(url).then(resp => {
                 const data = resp.response.venues.map(place => (
                     {
@@ -73,7 +94,13 @@ class App extends Component {
                     }
                 })
             }
-        )
+        ).catch(err => this.alertEr(err));
+    };
+
+
+    componentDidMount() {
+        this.resize();
+        this.fetch();
     }
 
     changeMarker = (e, locId) => {
@@ -82,7 +109,7 @@ class App extends Component {
                 activeLocation: this.state.data.find(el => el.key === locId),
                 modalViability: !e
             }, () => {
-                e &&this.mapComponent.openInfoWindow(this.state.activeLocation)
+                e && this.mapComponent.openInfoWindow(this.state.activeLocation)
             }
         )
     };
@@ -109,12 +136,20 @@ class App extends Component {
                     this.setState({ready: true});
                 }
             }
-        } else this.props.onError()
+        } else {
+            this.alertEr('map failed')
+        }
     };
 
     render() {
         return (
             <div>
+                {
+                    this.state.errorMessage && <Alert
+                        message={this.state.errorMessage}
+                        closeAlert={this.closeAlert}
+                    />
+                }
                 <AppHeader navExpand={this.state.navExpand} toggleNav={this.toggleNav}/>
                 <main>
                     <div className={["side-wrapper", this.state.navExpand ? 'expanded' : 'hidden'].join(' ')}>
@@ -143,6 +178,7 @@ class App extends Component {
                 </footer>
                 {this.state.modalViability && <Modal
                     close={this.closeModal}
+                    alertEr={this.alertEr}
                     activeLocation={this.state.activeLocation}
                 >
                 </Modal>}

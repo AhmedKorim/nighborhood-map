@@ -42,14 +42,22 @@ class Modal extends React.Component {
 
         }
     };
-
-    componentDidMount() {
+    focusMangment = () => {
         this.lastActiveElement = document.activeElement;
         document.querySelector('.modal').focus();
         this.focusEl = Array.from(document.querySelectorAll('.modal button , .modal [tabIndex="-1"]'));
+    };
+    fetchImg = () => {
         fetchImges(this.props.activeLocation.key)
             .then(resp => this.mounntImage(resp))
-            .catch(error => console.log(error))
+            .catch(error => this.props.alertEr(error))
+    };
+
+
+    componentDidMount() {
+        this.focusMangment();
+        this.fetchImg();
+
     }
 
     mounntImage = (imageData) => {
