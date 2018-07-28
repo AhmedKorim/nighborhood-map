@@ -18,7 +18,7 @@ class App extends Component {
         formInput: 'clean',
         data: null,
         filteredPlaces: null,
-        ready: false,
+        mapReady: false,
         modalViability: false,
         activeLocation: null,
         modalContent: null,
@@ -133,7 +133,7 @@ class App extends Component {
         if (isScriptLoaded && !this.props.isScriptLoaded) { // load finished
             if (isScriptLoadSucceed) {
                 if (window.google) {
-                    this.setState({ready: true});
+                    this.setState({mapReady: true});
                 }
             }
         } else {
@@ -167,7 +167,7 @@ class App extends Component {
                         />
                     </div>
                     <div className={["map-wrapper", this.state.navExpand ? 'contraction' : 'Expansion'].join(' ')}>
-                        {this.state.ready && (<Map
+                        {(this.state.mapReady && this.state.data) && (<Map
                             ref={mapcom => this.mapComponent = mapcom}
                             locations={this.state.filteredPlaces}
                             modalViability={this.state.modalViability}
