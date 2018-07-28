@@ -66,10 +66,13 @@ class Map extends React.Component {
                 animation: window.google.maps.Animation.DROP,
                 id: index,
             });
-            marker.addListener('click', function () {
-                that.populateInfoWindow(this, that.state.infoWindow);
-                that.props.content()
-            });
+            marker.addListener('click', (function (e,postion) {
+                return function () {
+                    that.populateInfoWindow(this, that.state.infoWindow);
+                    that.props.content(e,postion.key)
+                }
+
+            })(null,postion));
             that.setState(prevState => ({markers: prevState.markers.concat(marker)}), () => {
                 that.drawMarkers();
             });
@@ -92,12 +95,10 @@ class Map extends React.Component {
             this.bounds.extend(marker.position);
         }
         this.state.map.fitBounds(this.bounds);
-
-    }
+    };
 
 
     mapInit = () => {
-        const {content, modalViability} = this.props;
         if (window.google && this.state.mapConatienr && this.props.locations) {
             this.createMap();
         }

@@ -20,7 +20,7 @@ class App extends Component {
         filteredPlaces: null,
         ready: false,
         modalViability: false,
-        activeLocation: {},
+        activeLocation: null,
         modalContent: null,
         dimensions: {}
     };
@@ -32,12 +32,12 @@ class App extends Component {
         const value = e.target ? e.target.value : null;
         console.log(value);
         this.setState({
-            filter: value,
-            filteredPlaces: value === '' ? this.state.data : this.state.data.filter(place => place.name.toLowerCase().indexOf(value.toLowerCase()) >= 0),
-            clearedPlaces: value === '' ? this.state.data : this.state.data.filter(place => place.name.toLowerCase().indexOf(value.toLowerCase()) < 0)
+                filter: value,
+                filteredPlaces: value === '' ? this.state.data : this.state.data.filter(place => place.name.toLowerCase().indexOf(value.toLowerCase()) >= 0),
+                clearedPlaces: value === '' ? this.state.data : this.state.data.filter(place => place.name.toLowerCase().indexOf(value.toLowerCase()) < 0)
 
-        }, () => {
-            this.mapComponent.clearMarkers(this.state.clearedPlaces);
+            }, () => {
+                this.mapComponent.clearMarkers(this.state.clearedPlaces);
             }
         )
     };
@@ -82,6 +82,7 @@ class App extends Component {
     }
 
     changeMarker = (e, locId) => {
+        console.log(locId);
         this.setState({
             activeLocation: this.state.data.find(el => el.key === locId),
             modalViability: true
@@ -133,7 +134,6 @@ class App extends Component {
                     <div className={["map-wrapper", this.state.navExpand ? 'contraction' : 'Expansion'].join(' ')}>
                         {this.state.ready && (<Map
                             ref={mapcom => this.mapComponent = mapcom}
-                            ref={mapcom => this.mapComponent = mapcom}
                             locations={this.state.filteredPlaces}
                             modalViability={this.state.modalViability}
                             content={this.changeMarker}/>)}
@@ -143,8 +143,8 @@ class App extends Component {
                 </footer>
                 {this.state.modalViability && <Modal
                     close={this.closeModal}
+                    activeLocation={this.state.activeLocation}
                 >
-                    <div id="pano"></div>
                 </Modal>}
             </div>
         );

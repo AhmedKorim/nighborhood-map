@@ -1,7 +1,13 @@
 import React from 'react';
 import ButtonLink from "./ButtonLink";
+import {fetchImges} from "../../data/Forsquare";
+import 'react-perfect-scrollbar/dist/css/styles.css';
+import PerfectScrollbar from 'react-perfect-scrollbar'
 
 class Modal extends React.Component {
+    state = {
+        imgData: null
+    }
     overClose = (e) => {
         e.stopPropagation();
         document.querySelector('.modal').classList.add('fade');
@@ -40,8 +46,14 @@ class Modal extends React.Component {
     componentDidMount() {
         this.lastActiveElement = document.activeElement;
         document.querySelector('.modal').focus();
-        this.focusEl = Array.from(document.querySelectorAll('.modal button'));
+        this.focusEl = Array.from(document.querySelectorAll('.modal button , .modal [tabIndex="-1"]'));
+        fetchImges(this.props.activeLocation.key)
+            .then(resp => this.mounntImage(resp))
     }
+
+    mounntImage = (imageData) => {
+        this.setState({imgData: imageData})
+    };
 
     componentWillUnmount() {
         document.querySelector('.modal').classList.remove('fade');
@@ -49,17 +61,39 @@ class Modal extends React.Component {
     }
 
     render() {
+        const {activeLocation} = this.props;
+        console.log(activeLocation);
         return (
             <div className='modal-overlay' onKeyDown={this.trap} onClick={this.overClose}>
                 <div className="modal" tabIndex="0" onClick={(e) => e.stopPropagation()}>
                     <div className="modal-header">
-                        <div className="modal-title"><h3> modal title</h3></div>
+                        <div className="modal-title"><h3> {activeLocation.name}</h3></div>
                         <div className="modal-close">
                             <ButtonLink click={this.overClose}>close</ButtonLink>
                         </div>
                     </div>
                     <div className="modal-body">
-                        {this.props.children}
+                        <PerfectScrollbar>
+                            {this.state.imgData && <div className="img-wrapper">
+                                <img src={this.state.imgData.imgSrc} alt={activeLocation.name}/>
+                            </div>}
+                            <div className="place-over-view">
+                                <div className="data">
+                                    <ul>
+                                        <li>
+                                            <span>address</span> <p>{activeLocation.location.address}</p>
+                                        </li>
+                                        <li>
+                                            <span>crossStreet</span> <p>{activeLocation.location.crossStreet}</p>
+                                        </li>
+                                        <li>
+                                            <span>postalCode</span> <p>{activeLocation.location.postalCode}</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="pano" tabIndex="-1" aria-hidden="true"></div>
+                            </div>
+                        </PerfectScrollbar>
                     </div>
                     <div className="modal-footer">
                         <div className="close-modal">
