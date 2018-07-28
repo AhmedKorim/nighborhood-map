@@ -473,6 +473,7 @@ main {
       border-bottom: 1px solid $secColor;
       height: 400px;
       width: 500px;
+
       overflow-y: auto;
       .place-over-view {
         padding: 1rem .5rem;
@@ -488,6 +489,7 @@ main {
             padding: 0;
             margin: 0;
             li {
+              width: 100%;
               padding: .2rem;
               color: $lightColor;
               span {
@@ -510,6 +512,20 @@ main {
         width: 100%;
         img {
           width: 100%
+        }
+      }
+      @media all and (max-width:700px) {
+        height: 400px;
+        width: 300px;
+        .place-over-view{
+          flex-wrap: wrap;
+          .data{
+            width: 100%;
+            padding-bottom: 1rem;
+          }
+        }
+        #pano{
+          width: 100%;
         }
       }
     }

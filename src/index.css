@@ -358,6 +358,7 @@ main {
             padding: 0;
             margin: 0; }
             .modal-overlay .modal .modal-body .place-over-view .data ul li {
+              width: 100%;
               padding: .2rem;
               color: #F3F3F3; }
               .modal-overlay .modal .modal-body .place-over-view .data ul li span {
@@ -373,6 +374,17 @@ main {
         width: 100%; }
         .modal-overlay .modal .modal-body .img-wrapper img {
           width: 100%; }
+      @media all and (max-width: 700px) {
+        .modal-overlay .modal .modal-body {
+          height: 400px;
+          width: 300px; }
+          .modal-overlay .modal .modal-body .place-over-view {
+            flex-wrap: wrap; }
+            .modal-overlay .modal .modal-body .place-over-view .data {
+              width: 100%;
+              padding-bottom: 1rem; }
+          .modal-overlay .modal .modal-body #pano {
+            width: 100%; } }
     .modal-overlay .modal .modal-footer {
       display: flex;
       justify-content: flex-end;

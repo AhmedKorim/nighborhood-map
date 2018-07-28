@@ -4,7 +4,7 @@ const v = '20171227';
 const ll = "52.520008,13.404954";
 const venuesID = "43695300f964a5208c291fe3";
 const limit = "100";
-const radius = "1000";
+const radius = "3000";
 const categories = {
     Food: "4d4b7105d754a06374d81259",
     Library: "4bf58dd8d48988d12f941735",
@@ -22,7 +22,7 @@ export const fetchingPlaces = (url) => {
             if (response.ok) {
                 return response.json();
             }
-            reject('api error')
+            reject('api quota exceeded')
         }).then(data => {
             if (data) {
                 resolve(data)
@@ -34,12 +34,11 @@ export const fetchImges = (venuesID) => {
     const imgUrl = `https://api.foursquare.com/v2/venues/${venuesID}/photos?limit=9&client_id=${clientID}&client_secret=${clientSecret}&v=${v}`;
     return new Promise((resolve, reject) => {
         fetch(imgUrl).then(response => {
-            console.log(response);
             if (response.ok) {
                 console.log('ok');
                 return response.json()
             }
-            reject(response)
+            reject('api quota exceeded')
         }).then(data => {
             if (data) {
                 const {prefix, height, width, suffix, user, source} = data.response.photos.items[0];

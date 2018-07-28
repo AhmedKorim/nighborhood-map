@@ -14,8 +14,8 @@ class Map extends React.Component {
 
         this.setState({
                 map: new window.google.maps.Map(this.state.mapConatienr, {
-                    center: {lat: 40.7413549, lng: -73.9980244},
-                    zoom: 11,
+                    center: {lat: 52.520008, lng: 13.404954},
+                    zoom: 9,
                     mapTypeControl: true,
                 }),
                 infoWindow: new window.google.maps.InfoWindow(),
@@ -26,33 +26,26 @@ class Map extends React.Component {
         )
     };
     populateInfoWindow = (marker, infoWindow) => {
-        if (infoWindow.marker !== marker) {
-            infoWindow.setContent('');
-            infoWindow.marker = marker;
-            infoWindow.addListener('closeclick', function () {
-                infoWindow.marker = null;
-            });
-            const streetViewService = new window.google.maps.StreetViewService();
-            const raduis = 100;
+        const streetViewService = new window.google.maps.StreetViewService();
+        const raduis = 100;
 
-            function getSreetView(data, status) {
-                if (status === window.google.maps.StreetViewStatus.OK) {
-                    const nearStreetViewLocation = data.location.latLng;
-                    const heading = window.google.maps.geometry.spherical.computeHeading(nearStreetViewLocation, marker.position);
-                    infoWindow.setContent(`<div> ${marker.title}</div>`);
-                    const panoramaOptions = {
-                        position: nearStreetViewLocation,
-                        pov: {
-                            heading: heading,
-                            pitch: 30
-                        }
-                    };
-                    const panorama = new window.google.maps.StreetViewPanorama(document.getElementById('pano'), panoramaOptions);
-                }
+        function getSreetView(data, status) {
+            if (status === window.google.maps.StreetViewStatus.OK) {
+                const nearStreetViewLocation = data.location.latLng;
+                const heading = window.google.maps.geometry.spherical.computeHeading(nearStreetViewLocation, marker.position);
+                const panoramaOptions = {
+                    position: nearStreetViewLocation,
+                    pov: {
+                        heading: heading,
+                        pitch: 30
+                    }
+                };
+                const panorama = new window.google.maps.StreetViewPanorama(document.getElementById('pano'), panoramaOptions);
             }
-
-            streetViewService.getPanoramaByLocation(marker.position, raduis, getSreetView);
         }
+
+        streetViewService.getPanoramaByLocation(marker.position, raduis, getSreetView);
+
     };
     creatMarkers = () => {
         const that = this;
@@ -68,6 +61,8 @@ class Map extends React.Component {
             marker.addListener('click', (function (e, postion) {
                 return function () {
                     that.populateInfoWindow(this, that.state.infoWindow);
+                    that.state.infoWindow.marker = null;
+                    that.state.infoWindow.close();
                     that.props.content(e, postion.key);
                 }
 
@@ -106,13 +101,18 @@ class Map extends React.Component {
             this.createMap();
         }
     };
+
     openInfoWindow = (ActiveMarker) => {
         if (!this.state.map) return;
-
+        const marker = this.state.markers.find(marker => marker.title === ActiveMarker.name);
+        const {infoWindow} = this.state;
+        infoWindow.setContent(`${marker.title} <br> <small>click the marker for more info</small>`);
+        infoWindow.marker = marker;
+        infoWindow.addListener('closeclick', function () {
+            infoWindow.marker = null;
+        });
         this.state.infoWindow
-            .open(this.state.map, this.state.markers
-                .find(marker => marker.title === ActiveMarker.name)
-            )
+            .open(this.state.map, marker)
     };
 
 

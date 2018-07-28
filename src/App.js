@@ -33,7 +33,7 @@ class App extends Component {
         this.setState({
                 filter: value,
                 filteredPlaces: value === '' ? this.state.data : this.state.data.filter(place => place.name.toLowerCase().indexOf(value.toLowerCase()) >= 0),
-                clearedPlaces: value === '' ? this.state.data : this.state.data.filter(place => place.name.toLowerCase().indexOf(value.toLowerCase()) < 0)
+                clearedPlaces: value === '' ? [] : this.state.data.filter(place => place.name.toLowerCase().indexOf(value.toLowerCase()) < 0)
 
             }, () => {
                 this.mapComponent.clearMarkers(this.state.clearedPlaces);
@@ -80,9 +80,9 @@ class App extends Component {
         console.log(locId);
         this.setState({
                 activeLocation: this.state.data.find(el => el.key === locId),
-                modalViability: true
+                modalViability: !e
             }, () => {
-                this.mapComponent.openInfoWindow(this.state.activeLocation)
+                e &&this.mapComponent.openInfoWindow(this.state.activeLocation)
             }
         )
     };
