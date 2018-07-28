@@ -49,6 +49,7 @@ class Modal extends React.Component {
         this.focusEl = Array.from(document.querySelectorAll('.modal button , .modal [tabIndex="-1"]'));
         fetchImges(this.props.activeLocation.key)
             .then(resp => this.mounntImage(resp))
+            .catch(error => console.log(error))
     }
 
     mounntImage = (imageData) => {
@@ -62,7 +63,6 @@ class Modal extends React.Component {
 
     render() {
         const {activeLocation} = this.props;
-        console.log(activeLocation);
         return (
             <div className='modal-overlay' onKeyDown={this.trap} onClick={this.overClose}>
                 <div className="modal" tabIndex="0" onClick={(e) => e.stopPropagation()}>

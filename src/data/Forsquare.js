@@ -22,15 +22,23 @@ export const fetchingDate = (url) => {
 export const fetchImges = (venuesID) => {
     const imgUrl = `https://api.foursquare.com/v2/venues/${venuesID}/photos?limit=9&client_id=${clientID}&client_secret=${clientSecret}&v=${v}`;
     return new Promise((resolve, reject) => {
-        resolve(fetch(imgUrl).then(response => response.json()).then(data => {
-            const {prefix, height, width, suffix, user, source} = data.response.photos.items[0];
-            return {
-                imgSrc: `${prefix}${height}x${width}${suffix}`,
-                user,
-                source
+        fetch(imgUrl).then(response => {
+            console.log(response);
+            if (response.ok) {
+                console.log('ok');
+                return response.json()
             }
-        }))
-            .catch(error => reject(error))
+            reject(response)
+        }).then(data => {
+            if (data) {
+                const {prefix, height, width, suffix, user, source} = data.response.photos.items[0];
+                resolve({
+                    imgSrc: `${prefix}${height}x${width}${suffix}`,
+                    user,
+                    source
+                })
+            }
+        })
     })
 
 };
