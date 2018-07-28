@@ -1,7 +1,7 @@
 const clientID = '33YTSGDO4CLJBKDY10UB0NLS41DURHM3JVVFDH1W50YUMV2Z';
 const clientSecret = 'FE0WP1ETLKAODLF1TUWXBZYFHP3BIRZ1OJCOUIRRT31ASROL';
 const v = '20171227';
-const ll = "40.7243,-74.0018";
+const ll = "52.520008,13.404954";
 const venuesID = "43695300f964a5208c291fe3";
 const limit = "100";
 const radius = "1000";
@@ -12,12 +12,23 @@ const categories = {
     Circus: "52e81612bcbc57f1066b79e7",
     Coffee: "4bf58dd8d48988d1e0931735"
 };
-export const url = `https://api.foursquare.com/v2/venues/search?ll=${40.7413549},${-73.9980244}
+export const url = `https://api.foursquare.com/v2/venues/search?ll=${ll}
 &categoryId=${Object.values(categories)}&radius=${radius}&client_id=${clientID}&client_secret=${clientSecret}&v=${v}&limit=${limit}`;
 const imgUrl = `https://api.foursquare.com/v2/venues/${venuesID}/photos?limit=9&client_id=${clientID}&client_secret=${clientSecret}&v=${v}`;
 
-export const fetchingDate = (url) => {
-    fetch(url).then(response => response.json()).then(data => data)
+export const fetchingPlaces = (url) => {
+    return new Promise((resolve, reject) => {
+        fetch(url).then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            reject('api error')
+        }).then(data => {
+            if (data) {
+                resolve(data)
+            }
+        })
+    });
 };
 export const fetchImges = (venuesID) => {
     const imgUrl = `https://api.foursquare.com/v2/venues/${venuesID}/photos?limit=9&client_id=${clientID}&client_secret=${clientSecret}&v=${v}`;

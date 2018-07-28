@@ -4,10 +4,9 @@ import Map from "./components/Map/Map";
 import AppHeader from "./components/Layout/AppHeader";
 import Sidebar from "./components/Layout/Sidebar";
 import scriptLoader from 'react-async-script-loader';
-
-import {url} from "./data/Forsquare";
 import Modal from "./components/Layout/Modal";
 import {getStyle} from "./data/tools";
+import {fetchingPlaces, url} from "./data/Forsquare";
 
 class App extends Component {
     state = {
@@ -56,38 +55,39 @@ class App extends Component {
                 }))
             });
         })(this);
-        if (!localStorage.getItem('ahmed')) {
-            fetch(url)
-                .then(resp => resp.json())
-                .then(data => localStorage.setItem('ahmed', JSON.stringify(data)));
-        } else {
-            const apiData = JSON.parse(localStorage.getItem('ahmed'));
-            const data = apiData.response.venues.map(place => (
-                {
-                    key: place.id,
-                    name: place.name,
-                    location: place.location,
-                    ll: place.location.labeledLatLngs
-                }
-            ))
-            this.setState({
-                data,
-                filteredPlaces: data,
-                dimensions: {
-                    listHeight: {height: `${getStyle('.side-wrapper', 'height') - getStyle('.tools', 'height') - getStyle('.filter', 'height') - 15}px`}
-                }
-            })
-        }
 
+        fetchingPlaces(url).then(resp => {
+                const data = resp.response.venues.map(place => (
+                    {
+                        key: place.id,
+                        name: place.name,
+                        location: place.location,
+                        ll: place.location.labeledLatLngs
+                    }
+                ))
+                this.setState({
+                    data,
+                    filteredPlaces: data,
+                    dimensions: {
+                        listHeight: {height: `${getStyle('.side-wrapper', 'height') - getStyle('.tools', 'height') - getStyle('.filter', 'height') - 15}px`}
+                    }
+                })
+            }
+        )
     }
 
     changeMarker = (e, locId) => {
         console.log(locId);
         this.setState({
-            activeLocation: this.state.data.find(el => el.key === locId),
-            modalViability: true
-        })
+                activeLocation: this.state.data.find(el => el.key === locId),
+                modalViability: true
+            }, () => {
+                this.mapComponent.openInfoWindow(this.state.activeLocation)
+            }
+        )
     };
+
+
     formInputBlur = (e) => {
         if (e.target.value !== '') return;
         e.target.parentElement.classList.remove('dirty');

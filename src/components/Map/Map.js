@@ -49,7 +49,6 @@ class Map extends React.Component {
                     };
                     const panorama = new window.google.maps.StreetViewPanorama(document.getElementById('pano'), panoramaOptions);
                 }
-
             }
 
             streetViewService.getPanoramaByLocation(marker.position, raduis, getSreetView);
@@ -66,13 +65,13 @@ class Map extends React.Component {
                 animation: window.google.maps.Animation.DROP,
                 id: index,
             });
-            marker.addListener('click', (function (e,postion) {
+            marker.addListener('click', (function (e, postion) {
                 return function () {
                     that.populateInfoWindow(this, that.state.infoWindow);
-                    that.props.content(e,postion.key)
+                    that.props.content(e, postion.key);
                 }
 
-            })(null,postion));
+            })(null, postion));
             that.setState(prevState => ({markers: prevState.markers.concat(marker)}), () => {
                 that.drawMarkers();
             });
@@ -81,13 +80,17 @@ class Map extends React.Component {
     };
 
     drawMarkers = () => {
+        if (!this.state.map) return;
+
         for (const marker of this.state.markers) {
             marker.setMap(this.state.map);
             this.bounds.extend(marker.position);
         }
         this.state.map.fitBounds(this.bounds);
+
     };
     clearMarkers = (cleardMarkers) => {
+        if (!this.state.map) return;
         this.drawMarkers();
         const markersToClear = this.state.markers.filter(marker => cleardMarkers.find(cleardMarker => cleardMarker.name === marker.title));
         for (const marker of markersToClear) {
@@ -103,6 +106,15 @@ class Map extends React.Component {
             this.createMap();
         }
     };
+    openInfoWindow = (ActiveMarker) => {
+        if (!this.state.map) return;
+
+        this.state.infoWindow
+            .open(this.state.map, this.state.markers
+                .find(marker => marker.title === ActiveMarker.name)
+            )
+    };
+
 
     componentDidMount() {
         this.mapInit();
