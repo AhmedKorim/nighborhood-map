@@ -98,7 +98,6 @@ class Map extends React.Component {
     mapInit = () => {
         if (window.google && this.mapConatienr && this.props.locations) {
 
-            console.log(window.gm_authFailure);
             this.createMap();
         }
     };
@@ -119,7 +118,6 @@ class Map extends React.Component {
 
     componentDidMount() {
         this.mapInit();
-        console.log('map');
     }
 
 

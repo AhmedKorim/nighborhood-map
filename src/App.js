@@ -112,6 +112,15 @@ class App extends Component {
         )
     };
 
+    openModalKey=(e, locId) => {
+        this.setState({
+                activeLocation: this.state.data.find(el => el.key === locId),
+                modalViability: true
+            }, () => {
+                e && this.mapComponent.openInfoWindow(this.state.activeLocation)
+            }
+        )
+    };
 
     formInputBlur = (e) => {
         if (e.target.value !== '') return;
@@ -162,6 +171,7 @@ class App extends Component {
                             filterVal={this.state.filter}
                             blur={this.formInputBlur}
                             focus={this.formInputFocus}
+                            openModalKey={this.openModalKey}
                         />
                     </div>
                     <div className={["map-wrapper", this.state.navExpand ? 'contraction' : 'Expansion'].join(' ')}>

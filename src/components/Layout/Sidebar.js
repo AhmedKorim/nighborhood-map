@@ -5,7 +5,7 @@ import Input from "./InputFeild";
 
 
 const Sidebar = (props) => {
-    const {toggleTap, activeTap, filterVal, changeFilter, focus, blur, locations, changeMarker, dimensions} = props;
+    const {toggleTap, activeTap, filterVal, changeFilter, focus, blur, locations, changeMarker, dimensions,openModalKey} = props;
     return (
         <aside>
             <div className="wrapper">
@@ -43,6 +43,7 @@ const Sidebar = (props) => {
                         <div className="locations list"
                         >
                             <List
+                            openModalKey={openModalKey}
                                 listHeight={dimensions.listHeight}
                                 changeMarker={changeMarker}
                                 locations={locations}/>

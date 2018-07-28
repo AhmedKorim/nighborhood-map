@@ -5,7 +5,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 
 
 const List = (props) => {
-    const {locations, changeMarker,listHeight} = props;
+    const {locations, changeMarker,listHeight,openModalKey} = props;
     return (
         <div className="locations"
              style={listHeight}>
@@ -16,6 +16,7 @@ const List = (props) => {
                             <ButtonLink
                                 label={`show more information about ${location.name}`}
                                 click={(e) => changeMarker(e, location.key)}
+                                keyPressed={(e) => openModalKey(e, location.key)}
                             >
                                 <div className="list-content">
                                     <div className="icon">
