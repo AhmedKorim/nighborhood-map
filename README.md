@@ -28,6 +28,11 @@ an clicking the marker will open the modal with more data of that place
  
  - [react-perfect-scrollba](https://github.com/goldenyz/react-perfect-scrollbar) 
  
+ ## APIs used
+ - [google maps api](https://cloud.google.com/maps-platform/)
+ 
+ - [foursquare places api](https://developer.foursquare.com/places-api)
+ 
  ## development
  running 
  - install dependencies `npm install `
