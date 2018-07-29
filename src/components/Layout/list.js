@@ -5,13 +5,13 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 
 
 const List = (props) => {
-    const {locations, changeMarker,listHeight,openModalKey} = props;
+    const {locations, changeMarker, listHeight, openModalKey} = props;
     return (
         <div className="locations"
              style={listHeight}>
             <PerfectScrollbar>
-                <ul>
-                    {locations && locations.map(location => (<li
+                {locations && <ul aria-live="assertive" aria-label={`${locations.length} places found`}>
+                    {locations.map(location => (<li
                             key={location.key}>
                             <ButtonLink
                                 label={`show more information about ${location.name}`}
@@ -27,7 +27,7 @@ const List = (props) => {
                             </ButtonLink>
                         </li>)
                     )}
-                </ul>
+                </ul>}
             </PerfectScrollbar>
         </div>
     )

@@ -179,6 +179,7 @@ class App extends Component {
                     </div>
                     <div className={["map-wrapper", this.state.navExpand ? 'contraction' : 'Expansion'].join(' ')}>
                         {(this.state.mapReady && this.state.data) && (<Map
+                            alertEr={this.alertEr}
                             ref={mapcom => this.mapComponent = mapcom}
                             locations={this.state.filteredPlaces}
                             modalViability={this.state.modalViability}

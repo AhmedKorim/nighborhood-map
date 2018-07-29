@@ -123,6 +123,9 @@ class Map extends React.Component {
 
     componentDidMount() {
         this.mapInit();
+        window.gm_authFailure = () => {
+            this.props.alertEr('google maps error')
+        }
     }
 
 
