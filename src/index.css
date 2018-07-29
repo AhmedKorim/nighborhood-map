@@ -404,9 +404,11 @@ main {
   width: 400px;
   height: 60px;
   position: fixed;
-  top: 100px;
-  right: 50%;
+  top: 50px;
   z-index: 666; }
+  @media (max-width: 600px) {
+    .alertBody {
+      width: 80%; } }
   .alertBody .alert {
     cursor: pointer;
     transition: all 1s ease-in-out;

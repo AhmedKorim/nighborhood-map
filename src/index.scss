@@ -557,10 +557,13 @@ main {
 
 .alertBody {
   width: 400px;
+  @media  (max-width : 600px) {
+    width: 80%;
+  }
+
   height: 60px;
   position: fixed;
-  top: 100px;
-  right: 50%;
+  top: 50px;
   z-index: 666;
 
   //animation: alert .6s infinite ease-in-out;
