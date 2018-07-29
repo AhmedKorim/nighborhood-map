@@ -7,7 +7,7 @@ class Map extends React.Component {
         isRendered: false,
         bounds: null
     };
-    mapConatienr= null;
+    mapConatienr = null;
     bounds = new window.google.maps.LatLngBounds();
     createMap = () => {
 
@@ -101,6 +101,11 @@ class Map extends React.Component {
             this.createMap();
         }
     };
+    openStreatVeiw = (ActiveMarker) => {
+        const marker = this.state.markers.find(marker => marker.title === ActiveMarker.name);
+        this.populateInfoWindow(marker);
+    };
+
 
     openInfoWindow = (ActiveMarker) => {
         if (!this.state.map) return;
