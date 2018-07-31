@@ -128,6 +128,9 @@ class Map extends React.Component {
         }
     }
 
+    shouldComponentUpdate(nexProps, PrevState) {
+        return nexProps.locations === nexProps.locations;
+    }
 
     render() {
         return (
