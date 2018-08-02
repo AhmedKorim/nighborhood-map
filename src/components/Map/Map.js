@@ -106,7 +106,7 @@ class Map extends React.Component {
         if (!this.state.map) return;
         const marker = this.state.markers.find(marker => marker.title === ActiveMarker.name);
         const {infoWindow} = this.state;
-        infoWindow.setContent(`${marker.title} <br> <small>click the marker for more info</small>`);
+        infoWindow.setContent(`${marker.title} <br> <small>click the marker or press Enter for more info</small>`);
         infoWindow.marker = marker;
         infoWindow.addListener('closeclick', function () {
             infoWindow.marker = null;
