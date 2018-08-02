@@ -112,12 +112,15 @@ class App extends Component {
         )
     };
 
-    openModalKey=(e, locId) => {
+    openModalKey = (e, locId) => {
         this.setState({
                 activeLocation: this.state.data.find(el => el.key === locId),
                 modalViability: true
             }, () => {
-                e && this.mapComponent.openInfoWindow(this.state.activeLocation)
+                if (e) {
+                    this.mapComponent.openInfoWindow(this.state.activeLocation);
+                    this.mapComponent.openStreatVeiw(this.state.activeLocation);
+                }
             }
         )
     };
@@ -176,6 +179,7 @@ class App extends Component {
                     </div>
                     <div className={["map-wrapper", this.state.navExpand ? 'contraction' : 'Expansion'].join(' ')}>
                         {(this.state.mapReady && this.state.data) && (<Map
+                            alertEr={this.alertEr}
                             ref={mapcom => this.mapComponent = mapcom}
                             locations={this.state.filteredPlaces}
                             modalViability={this.state.modalViability}
